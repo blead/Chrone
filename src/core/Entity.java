@@ -3,6 +3,8 @@ package core;
 import java.util.HashMap;
 import java.util.Map;
 
+import utils.ComponentNotFoundException;
+
 public class Entity implements Comparable<Entity> {
 	private Map<Class<? extends Component>, Component> components;
 	private int z;
@@ -26,8 +28,11 @@ public class Entity implements Comparable<Entity> {
 		components.clear();
 	}
 
-	public Component getComponent(Class<? extends Component> componentClass) {
-		return components.get(componentClass);
+	public Component getComponent(Class<? extends Component> componentClass) throws ComponentNotFoundException {
+		Component component = components.get(componentClass);
+		if (component == null)
+			throw new ComponentNotFoundException();
+		return component;
 	}
 
 	public int getZ() {

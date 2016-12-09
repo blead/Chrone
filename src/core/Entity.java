@@ -28,6 +28,10 @@ public class Entity implements Comparable<Entity> {
 		components.clear();
 	}
 
+	public boolean contains(Class<? extends Component> componentClass) {
+		return components.containsKey(componentClass);
+	}
+
 	public Component getComponent(Class<? extends Component> componentClass) throws ComponentNotFoundException {
 		Component component = components.get(componentClass);
 		if (component == null)

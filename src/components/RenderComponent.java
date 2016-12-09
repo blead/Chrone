@@ -13,19 +13,19 @@ public class RenderComponent extends Component {
 	public RenderComponent(Renderable shape, Paint color) {
 		this.shape = shape;
 		this.color = color;
-		setOffset(Point2D.ZERO);
-	}
-
-	public RenderComponent(Renderable shape, Paint color, double offsetX, double offsetY) {
-		this.shape = shape;
-		this.color = color;
-		setOffset(new Point2D(offsetX, offsetY));
+		offset = Point2D.ZERO;
 	}
 
 	public RenderComponent(Renderable shape, Paint color, Point2D offset) {
 		this.shape = shape;
 		this.color = color;
-		setOffset(offset);
+		this.offset = offset;
+	}
+
+	public RenderComponent(Renderable shape, Paint color, double offsetX, double offsetY) {
+		this.shape = shape;
+		this.color = color;
+		offset = new Point2D(offsetX, offsetY);
 	}
 
 	public Renderable getShape() {

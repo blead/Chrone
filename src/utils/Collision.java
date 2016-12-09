@@ -5,13 +5,13 @@ public class Collision {
 	private Direction direction;
 	private double time;
 
-	public static Collision min(Collision a, Collision b) {
-		return a.getTime() < b.getTime() ? a : b;
-	}
-
 	public Collision(Direction direction, double time) {
 		this.direction = direction;
 		this.time = time;
+	}
+
+	public static Collision min(Collision a, Collision b) {
+		return a.getTime() < b.getTime() ? a : b;
 	}
 
 	public Direction getDirection() {

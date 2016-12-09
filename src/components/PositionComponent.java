@@ -10,12 +10,12 @@ public class PositionComponent extends Component {
 		position = Point2D.ZERO;
 	}
 
-	public PositionComponent(double x, double y) {
-		position = new Point2D(x, y);
-	}
-
 	public PositionComponent(Point2D position) {
 		this.position = position;
+	}
+
+	public PositionComponent(double x, double y) {
+		position = new Point2D(x, y);
 	}
 
 	public Point2D getPosition() {

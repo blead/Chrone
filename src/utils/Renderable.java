@@ -3,5 +3,9 @@ package utils;
 import javafx.scene.canvas.GraphicsContext;
 
 public interface Renderable {
-	void draw(GraphicsContext gc, double x, double y);
+	public abstract void draw(GraphicsContext gc, double x, double y);
+
+	public abstract double getWidth();
+
+	public abstract double getHeight();
 }

@@ -29,8 +29,16 @@ public class EntityManager {
 		sort();
 	}
 
+	public void addAll(List<Entity> entities) {
+		this.entities.addAll(entities);
+	}
+
 	public void remove(Entity... entities) {
 		this.entities.removeAll(Arrays.asList(entities));
+	}
+
+	public void clear() {
+		entities.clear();
 	}
 
 	public void sort() {

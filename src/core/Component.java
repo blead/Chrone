@@ -1,5 +1,5 @@
 package core;
 
-public interface Component {
+public abstract class Component {
 
 }

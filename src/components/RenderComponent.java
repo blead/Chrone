@@ -5,7 +5,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.paint.Paint;
 import utils.Renderable;
 
-public class RenderComponent implements Component {
+public class RenderComponent extends Component {
 	private Renderable shape;
 	private Paint color;
 	private Point2D offset;

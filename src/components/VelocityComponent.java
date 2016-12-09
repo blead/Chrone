@@ -3,7 +3,7 @@ package components;
 import core.Component;
 import javafx.geometry.Point2D;
 
-public class VelocityComponent implements Component {
+public class VelocityComponent extends Component {
 	private Point2D velocity;
 
 	public VelocityComponent() {

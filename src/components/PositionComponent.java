@@ -3,7 +3,7 @@ package components;
 import core.Component;
 import javafx.geometry.Point2D;
 
-public class PositionComponent implements Component {
+public class PositionComponent extends Component {
 	private Point2D position;
 
 	public PositionComponent() {

@@ -39,5 +39,5 @@ public abstract class EntitySystem implements Comparable<EntitySystem> {
 		return 1;
 	}
 
-	public abstract void update(float deltaTime);
+	public abstract void update(double deltaTime);
 }

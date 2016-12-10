@@ -4,14 +4,14 @@ import javafx.geometry.Point2D;
 
 public class PrioritizedPoint2D implements Comparable<PrioritizedPoint2D> {
 	private Point2D point2D;
-	private Integer priority;
+	private int priority;
 
-	public PrioritizedPoint2D(Point2D point2D, Integer priority) {
+	public PrioritizedPoint2D(Point2D point2D, int priority) {
 		this.point2D = point2D;
 		this.priority = priority;
 	}
 
-	public PrioritizedPoint2D(double x, double y, Integer priority) {
+	public PrioritizedPoint2D(double x, double y, int priority) {
 		point2D = new Point2D(x, y);
 		this.priority = priority;
 	}
@@ -28,12 +28,12 @@ public class PrioritizedPoint2D implements Comparable<PrioritizedPoint2D> {
 		return priority;
 	}
 
-	public void setPriority(Integer priority) {
+	public void setPriority(int priority) {
 		this.priority = priority;
 	}
 
 	@Override
 	public int compareTo(PrioritizedPoint2D other) {
-		return priority.compareTo(other.priority);
+		return Integer.compare(priority, other.priority);
 	}
 }

@@ -29,7 +29,7 @@ public class RenderableRectangle implements Renderable {
 	}
 
 	@Override
-	public void draw(GraphicsContext gc, double x, double y) {
+	public void render(GraphicsContext gc, double x, double y) {
 		gc.fillRect(x, y, width, height);
 	}
 }

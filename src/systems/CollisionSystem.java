@@ -17,8 +17,12 @@ import utils.ComponentNotFoundException;
 import utils.Direction;
 
 public class CollisionSystem extends EntitySystem {
+	public CollisionSystem() {
+		super(20);
+	}
+
 	@Override
-	public void update(float deltaTime) {
+	public void update(double deltaTime) {
 		List<Entity> entities = EntityManager.getInstance().getEntities();
 		for (Entity entity : entities) {
 			try {
@@ -26,9 +30,10 @@ public class CollisionSystem extends EntitySystem {
 				VelocityComponent velocityComponent = (VelocityComponent) entity.getComponent(VelocityComponent.class);
 				CollisionComponent collisionComponent = (CollisionComponent) entity
 						.getComponent(CollisionComponent.class);
+				Point2D interpolatedVelocity = velocityComponent.getVelocity().multiply(deltaTime);
 				Rectangle collisionBox = getCollisionBox(positionComponent.getPosition(),
 						collisionComponent.getCollisionShape()),
-						broadPhaseArea = getBroadPhaseArea(collisionBox, velocityComponent.getVelocity());
+						broadPhaseArea = getBroadPhaseArea(collisionBox, interpolatedVelocity);
 				Collision collision = Collision.NONE;
 				do {
 					for (Entity other : entities) {
@@ -45,17 +50,28 @@ public class CollisionSystem extends EntitySystem {
 							// only test inside broadPhaseArea
 							if (doIntersect(broadPhaseArea, otherCollisionBox)) {
 								// find earliest collision
+
+								// TODO: efficiently resolve cases where
+								// entities are already colliding
+
 								collision = Collision.min(collision,
-										getCollision(collisionBox, otherCollisionBox, velocityComponent.getVelocity()));
+										getCollision(collisionBox, otherCollisionBox, interpolatedVelocity));
 							}
 						} catch (ComponentNotFoundException e) {
 							continue;
 						}
 					}
-					positionComponent.setPosition(getResolvedPosition(positionComponent.getPosition(),
-							velocityComponent.getVelocity(), collision));
 					// slide off with remaining velocity
-					velocityComponent.setVelocity(getSlidingVelocity(velocityComponent.getVelocity(), collision));
+					Point2D resolvedPosition = getResolvedPosition(positionComponent.getPosition(),
+							interpolatedVelocity, collision),
+							slidingVelocity = getSlidingVelocity(interpolatedVelocity, collision);
+					if (positionComponent.getPosition().equals(resolvedPosition)
+							&& slidingVelocity.equals(Point2D.ZERO)) {
+						// no movements (already colliding)
+						collision = Collision.NONE;
+					}
+					positionComponent.setPosition(resolvedPosition);
+					velocityComponent.setVelocity(slidingVelocity);
 					// repeat until there is no collision
 				} while (collision.getTime() < 1);
 			} catch (ComponentNotFoundException e) {
@@ -89,7 +105,6 @@ public class CollisionSystem extends EntitySystem {
 				times = getTimes(distances, velocity);
 		double entryTime = Math.max(times[0].getX(), times[0].getY()),
 				exitTime = Math.min(times[1].getX(), times[1].getY());
-
 		if (entryTime > exitTime || times[0].getX() < 0 && times[0].getY() < 0
 				|| times[0].getX() > 1 && times[0].getY() > 1) {
 			return Collision.NONE;
@@ -132,6 +147,8 @@ public class CollisionSystem extends EntitySystem {
 		// [0]: entry time, [1]: exit time
 		double entryTimeX, exitTimeX, entryTimeY, exitTimeY;
 		try {
+			if (velocity.getX() == 0)
+				throw new ArithmeticException();
 			entryTimeX = distances[0].getX() / velocity.getX();
 			exitTimeX = distances[1].getX() / velocity.getX();
 		} catch (ArithmeticException e) {
@@ -139,6 +156,8 @@ public class CollisionSystem extends EntitySystem {
 			exitTimeX = Double.POSITIVE_INFINITY;
 		}
 		try {
+			if (velocity.getY() == 0)
+				throw new ArithmeticException();
 			entryTimeY = distances[0].getY() / velocity.getY();
 			exitTimeY = distances[1].getY() / velocity.getY();
 		} catch (ArithmeticException e) {

@@ -31,7 +31,7 @@ public class EntitySystemManager {
 		systems.clear();
 	}
 
-	public void update(float deltaTime) {
+	public void update(double deltaTime) {
 		for (EntitySystem system : systems) {
 			system.update(deltaTime);
 		}

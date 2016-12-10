@@ -10,8 +10,12 @@ public class Entity implements Comparable<Entity> {
 	private int z;
 
 	public Entity() {
+		this(0);
+	}
+
+	public Entity(int z) {
 		components = new HashMap<>();
-		z = 0;
+		this.z = z;
 	}
 
 	public void add(Component... components) {

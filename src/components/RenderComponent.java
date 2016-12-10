@@ -11,15 +11,11 @@ public class RenderComponent extends Component {
 	private Point2D offset;
 
 	public RenderComponent(Renderable shape, Paint color) {
-		this.shape = shape;
-		this.color = color;
-		offset = Point2D.ZERO;
+		this(shape, color, 0, 0);
 	}
 
 	public RenderComponent(Renderable shape, Paint color, Point2D offset) {
-		this.shape = shape;
-		this.color = color;
-		this.offset = offset;
+		this(shape, color, offset.getX(), offset.getY());
 	}
 
 	public RenderComponent(Renderable shape, Paint color, double offsetX, double offsetY) {

@@ -7,11 +7,11 @@ public class VelocityComponent extends Component {
 	private Point2D velocity;
 
 	public VelocityComponent() {
-		velocity = Point2D.ZERO;
+		this(0, 0);
 	}
 
 	public VelocityComponent(Point2D velocity) {
-		this.velocity = velocity;
+		this(velocity.getX(), velocity.getY());
 	}
 
 	public VelocityComponent(double x, double y) {

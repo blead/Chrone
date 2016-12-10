@@ -7,8 +7,7 @@ public class PrioritizedPoint2D implements Comparable<PrioritizedPoint2D> {
 	private int priority;
 
 	public PrioritizedPoint2D(Point2D point2D, int priority) {
-		this.point2D = point2D;
-		this.priority = priority;
+		this(point2D.getX(), point2D.getY(), priority);
 	}
 
 	public PrioritizedPoint2D(double x, double y, int priority) {

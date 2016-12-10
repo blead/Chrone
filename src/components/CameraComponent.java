@@ -6,7 +6,7 @@ public class CameraComponent extends Component {
 	private int priority;
 
 	public CameraComponent() {
-		priority = 0;
+		this(0);
 	}
 
 	public CameraComponent(int priority) {

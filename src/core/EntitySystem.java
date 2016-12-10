@@ -4,11 +4,6 @@ public abstract class EntitySystem implements Comparable<EntitySystem> {
 	private int priority;
 	private boolean isActive;
 
-	public EntitySystem() {
-		priority = 0;
-		isActive = true;
-	}
-
 	public EntitySystem(int priority) {
 		this.priority = priority;
 		this.isActive = true;

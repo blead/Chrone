@@ -2,7 +2,7 @@ package core;
 
 import entities.Block;
 import entities.Player;
-import javafx.scene.canvas.Canvas;
+import javafx.application.Platform;
 import main.Main;
 
 public class LevelManager {
@@ -29,7 +29,13 @@ public class LevelManager {
 			throw new NullPointerException();
 		EntityManager.getInstance().clear();
 		String[] data = level.getData();
-		Main.getInstance().setGameRoot(new Canvas(level.getWidth(), level.getHeight()));
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				Main.getInstance().getGameRoot().setWidth(level.getWidth());
+				Main.getInstance().getGameRoot().setHeight(level.getHeight());
+			}
+		});
 		for (int i = 0; i < data.length; i++) {
 			for (int j = 0; j < data[i].length(); j++) {
 				switch (data[i].charAt(j)) {

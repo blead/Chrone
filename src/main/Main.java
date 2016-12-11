@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -17,6 +18,7 @@ import systems.GravitySystem;
 import systems.InputSystem;
 import systems.MovementSystem;
 import systems.RenderSystem;
+import utils.RestartIntent;
 
 public class Main extends Application {
 	public static final String TITLE = "Chrone";
@@ -49,16 +51,8 @@ public class Main extends Application {
 		return applicationRoot;
 	}
 
-	public void setApplicationRoot(Pane applicationRoot) {
-		this.applicationRoot = applicationRoot;
-	}
-
 	public Canvas getGameRoot() {
 		return gameRoot;
-	}
-
-	public void setGameRoot(Canvas gameRoot) {
-		this.gameRoot = gameRoot;
 	}
 
 	public boolean isRunning() {
@@ -72,7 +66,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		LevelManager.getInstance().setLevel(new Level(LevelManager.LEVEL_ONE));
-		LevelManager.getInstance().load();
+		gameRoot = new Canvas();
 		applicationRoot = new Pane();
 		applicationRoot.setPrefSize(Main.WIDTH, Main.HEIGHT);
 		applicationRoot.getChildren().add(gameRoot);
@@ -80,6 +74,7 @@ public class Main extends Application {
 		primaryStage.setResizable(Main.IS_RESIZABLE);
 		primaryStage.setScene(new Scene(applicationRoot));
 		primaryStage.show();
+		LevelManager.getInstance().load();
 		EntitySystemManager.getInstance().add(new InputSystem(), new GravitySystem(), new CollisionSystem(),
 				new MovementSystem(), new CameraSystem(), new RenderSystem());
 		isRunning = true;
@@ -97,6 +92,8 @@ public class Main extends Application {
 			}
 		});
 
+		InputManager.getInstance().setTriggeredIntent(KeyCode.R, new RestartIntent());
+
 		gameLoop = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -109,6 +106,7 @@ public class Main extends Application {
 					// deltaTime in frame unit
 					if (deltaTime >= 1) {
 						EntitySystemManager.getInstance().update(deltaTime);
+						InputManager.getInstance().clearTriggered();
 						lastUpdateTime = now;
 					}
 					long timeUntilNextUpdate = (lastUpdateTime + timePerFrame - System.nanoTime()) / 1000000;

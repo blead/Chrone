@@ -36,7 +36,6 @@ public class CollisionSystem extends EntitySystem {
 						broadPhaseArea = getBroadPhaseArea(collisionBox, interpolatedVelocity);
 				Collision collision = Collision.NONE;
 				do {
-					System.out.println("lol");
 					for (Entity other : entities) {
 						// only test against static entities
 						if (other.contains(VelocityComponent.class))

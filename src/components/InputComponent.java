@@ -4,25 +4,30 @@ import java.util.HashMap;
 
 import core.Component;
 import javafx.scene.input.KeyCode;
-import javafx.util.Pair;
 import utils.Intent;
 
 public class InputComponent extends Component {
-	private HashMap<KeyCode, Intent> intents;
+	private HashMap<KeyCode, Intent> pressedIntents;
+	private HashMap<KeyCode, Intent> triggeredIntents;
 
-	@SafeVarargs
-	public InputComponent(Pair<KeyCode, Intent>... intentPairs) {
-		intents = new HashMap<>();
-		for (Pair<KeyCode, Intent> intentPair : intentPairs) {
-			intents.put(intentPair.getKey(), intentPair.getValue());
-		}
+	public InputComponent() {
+		pressedIntents = new HashMap<>();
+		triggeredIntents = new HashMap<>();
 	}
 
-	public Intent getIntent(KeyCode keyCode) {
-		return intents.get(keyCode);
+	public Intent getPressedIntent(KeyCode keyCode) {
+		return pressedIntents.get(keyCode);
 	}
 
-	public void setIntent(KeyCode keyCode, Intent intent) {
-		intents.put(keyCode, intent);
+	public void setPressedIntent(KeyCode keyCode, Intent intent) {
+		pressedIntents.put(keyCode, intent);
+	}
+
+	public Intent getTriggeredIntent(KeyCode keyCode) {
+		return triggeredIntents.get(keyCode);
+	}
+
+	public void setTriggeredIntent(KeyCode keyCode, Intent intent) {
+		triggeredIntents.put(keyCode, intent);
 	}
 }

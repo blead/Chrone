@@ -1,11 +1,14 @@
 package main;
 
 import core.EntitySystemManager;
+import core.InputManager;
 import core.Level;
 import core.LevelManager;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import systems.CameraSystem;
@@ -76,10 +79,23 @@ public class Main extends Application {
 		primaryStage.setResizable(Main.IS_RESIZABLE);
 		primaryStage.setScene(new Scene(applicationRoot));
 		primaryStage.show();
-		isRunning = true;
-
 		EntitySystemManager.getInstance().add(new GravitySystem(), new CollisionSystem(), new MovementSystem(),
 				new CameraSystem(), new RenderSystem());
+		isRunning = true;
+
+		primaryStage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent keyEvent) {
+				InputManager.getInstance().setPressed(keyEvent.getCode(), true);
+			}
+		});
+		primaryStage.getScene().setOnKeyReleased(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent keyEvent) {
+				InputManager.getInstance().setPressed(keyEvent.getCode(), false);
+			}
+		});
+
 		gameLoop = new Thread(new Runnable() {
 			@Override
 			public void run() {

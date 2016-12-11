@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import systems.CameraSystem;
 import systems.CollisionSystem;
 import systems.GravitySystem;
+import systems.InputSystem;
 import systems.MovementSystem;
 import systems.RenderSystem;
 
@@ -79,8 +80,8 @@ public class Main extends Application {
 		primaryStage.setResizable(Main.IS_RESIZABLE);
 		primaryStage.setScene(new Scene(applicationRoot));
 		primaryStage.show();
-		EntitySystemManager.getInstance().add(new GravitySystem(), new CollisionSystem(), new MovementSystem(),
-				new CameraSystem(), new RenderSystem());
+		EntitySystemManager.getInstance().add(new InputSystem(), new GravitySystem(), new CollisionSystem(),
+				new MovementSystem(), new CameraSystem(), new RenderSystem());
 		isRunning = true;
 
 		primaryStage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {

@@ -1,6 +1,8 @@
 package core;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
 
 import javafx.scene.input.KeyCode;
 
@@ -19,11 +21,15 @@ public class InputManager {
 		return instance;
 	}
 
+	synchronized public Set<KeyCode> getPressed() {
+		return Collections.unmodifiableSet(pressed);
+	}
+
 	public boolean isPressed(KeyCode keyCode) {
 		return pressed.contains(keyCode);
 	}
 
-	public void setPressed(KeyCode keyCode, boolean isPressed) {
+	synchronized public void setPressed(KeyCode keyCode, boolean isPressed) {
 		if (isPressed) {
 			if (pressed.add(keyCode)) {
 				triggered.add(keyCode);
@@ -33,6 +39,10 @@ public class InputManager {
 		} else {
 			pressed.remove(keyCode);
 		}
+	}
+
+	synchronized public Set<KeyCode> getTriggered() {
+		return Collections.unmodifiableSet(triggered);
 	}
 
 	public boolean isTriggered(KeyCode keyCode) {

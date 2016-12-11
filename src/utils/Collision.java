@@ -1,7 +1,8 @@
 package utils;
 
 public class Collision {
-	public static Collision NONE = new Collision(Direction.NONE, 1);
+	public static final Collision NONE = new Collision(Direction.ALL, 1), ALL = new Collision(Direction.NONE, 0),
+			CORNER = new Collision(Direction.DIAGONAL, 0);
 	private Direction direction;
 	private double time;
 
@@ -11,6 +12,13 @@ public class Collision {
 	}
 
 	public static Collision min(Collision a, Collision b) {
+		if (a.equals(Collision.ALL) || b.equals(Collision.ALL)
+				|| (a.getTime() == b.getTime() && a.getDirection().isPerpendicularTo(b.getDirection())))
+			return Collision.ALL;
+		if (a.equals(Collision.CORNER) && !b.equals(Collision.NONE))
+			return b;
+		if (b.equals(Collision.CORNER) && !a.equals(Collision.NONE))
+			return a;
 		return a.getTime() < b.getTime() ? a : b;
 	}
 

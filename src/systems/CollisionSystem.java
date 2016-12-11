@@ -36,6 +36,7 @@ public class CollisionSystem extends EntitySystem {
 						broadPhaseArea = getBroadPhaseArea(collisionBox, interpolatedVelocity);
 				Collision collision = Collision.NONE;
 				do {
+					System.out.println("lol");
 					for (Entity other : entities) {
 						// only test against static entities
 						if (other.contains(VelocityComponent.class))
@@ -49,11 +50,10 @@ public class CollisionSystem extends EntitySystem {
 									otherCollisionComponent.getCollisionShape());
 							// only test inside broadPhaseArea
 							if (doIntersect(broadPhaseArea, otherCollisionBox)) {
-								// find earliest collision
-
 								// TODO: efficiently resolve cases where
 								// entities are already colliding
 
+								// find earliest collision
 								collision = Collision.min(collision,
 										getCollision(collisionBox, otherCollisionBox, interpolatedVelocity));
 							}
@@ -65,14 +65,12 @@ public class CollisionSystem extends EntitySystem {
 					Point2D resolvedPosition = getResolvedPosition(positionComponent.getPosition(),
 							interpolatedVelocity, collision),
 							slidingVelocity = getSlidingVelocity(interpolatedVelocity, collision);
-					if (positionComponent.getPosition().equals(resolvedPosition)
-							&& slidingVelocity.equals(Point2D.ZERO)) {
-						// no movements (already colliding)
-						collision = Collision.NONE;
-					}
 					positionComponent.setPosition(resolvedPosition);
 					velocityComponent.setVelocity(slidingVelocity);
 					// repeat until there is no collision
+					interpolatedVelocity = slidingVelocity;
+					collisionBox = getCollisionBox(resolvedPosition, collisionBox);
+					collision = Collision.NONE;
 				} while (collision.getTime() < 1);
 			} catch (ComponentNotFoundException e) {
 				continue;
@@ -100,23 +98,28 @@ public class CollisionSystem extends EntitySystem {
 	}
 
 	private Collision getCollision(Rectangle collisionBox, Rectangle otherCollisionBox, Point2D velocity) {
-		// swept collision detection
+		// swept axis-aligned bounding box collision detection
 		Point2D[] distances = getDistances(collisionBox, otherCollisionBox, velocity),
 				times = getTimes(distances, velocity);
 		double entryTime = Math.max(times[0].getX(), times[0].getY()),
 				exitTime = Math.min(times[1].getX(), times[1].getY());
-		if (entryTime > exitTime || times[0].getX() < 0 && times[0].getY() < 0
-				|| times[0].getX() > 1 && times[0].getY() > 1) {
+		if (entryTime > exitTime || (times[0].getX() < 0 && times[0].getY() < 0))
 			return Collision.NONE;
-		} else {
-			Direction direction;
-			if (times[0].getX() > times[0].getY()) {
+		if (times[0].getX() == 0 && times[0].getY() == 0)
+			return Collision.CORNER;
+		Direction direction;
+		if (times[0].getX() > times[0].getY()) {
+			if (distances[0].getX() != 0)
 				direction = Direction.fromPoint2D(new Point2D(-distances[0].getX(), 0));
-			} else {
+			else
+				direction = Direction.RIGHT;
+		} else {
+			if (distances[0].getY() != 0)
 				direction = Direction.fromPoint2D(new Point2D(0, -distances[0].getY()));
-			}
-			return new Collision(direction, entryTime);
+			else
+				direction = Direction.DOWN;
 		}
+		return new Collision(direction, entryTime);
 	}
 
 	private Point2D getResolvedPosition(Point2D position, Point2D velocity, Collision collision) {
@@ -132,15 +135,22 @@ public class CollisionSystem extends EntitySystem {
 
 	private Point2D[] getDistances(Rectangle a, Rectangle b, Point2D velocity) {
 		// [0]: entry distance, [1]: exit distance
-		double leftToRight = Math.abs(b.getX() - (a.getX() + a.getWidth())),
-				rightToLeft = Math.abs((b.getX() + b.getWidth()) - a.getX()),
-				topToBottom = Math.abs(b.getY() - (a.getY() + a.getHeight())),
-				bottomToTop = Math.abs((b.getY() + b.getHeight()) - a.getY());
-		return new Point2D[] {
-				new Point2D(Math.copySign(Math.min(leftToRight, rightToLeft), velocity.getX()),
-						Math.copySign(Math.min(topToBottom, bottomToTop), velocity.getY())),
-				new Point2D(Math.copySign(Math.max(leftToRight, rightToLeft), velocity.getY()),
-						Math.copySign(Math.max(topToBottom, bottomToTop), velocity.getY())) };
+		double entryDistanceX, entryDistanceY, exitDistanceX, exitDistanceY;
+		if (velocity.getX() > 0) {
+			entryDistanceX = b.getX() - (a.getX() + a.getWidth());
+			exitDistanceX = (b.getX() + b.getWidth()) - a.getX();
+		} else {
+			entryDistanceX = (b.getX() + b.getWidth()) - a.getX();
+			exitDistanceX = b.getX() - (a.getX() + a.getWidth());
+		}
+		if (velocity.getY() > 0) {
+			entryDistanceY = b.getY() - (a.getY() + a.getHeight());
+			exitDistanceY = (b.getY() + b.getHeight()) - a.getY();
+		} else {
+			entryDistanceY = (b.getY() + b.getHeight()) - a.getY();
+			exitDistanceY = b.getY() - (a.getY() + a.getHeight());
+		}
+		return new Point2D[] { new Point2D(entryDistanceX, entryDistanceY), new Point2D(exitDistanceX, exitDistanceY) };
 	}
 
 	private Point2D[] getTimes(Point2D[] distances, Point2D velocity) {
@@ -164,6 +174,10 @@ public class CollisionSystem extends EntitySystem {
 			entryTimeY = Double.NEGATIVE_INFINITY;
 			exitTimeY = Double.POSITIVE_INFINITY;
 		}
+		if (entryTimeX > 1)
+			entryTimeX = Double.NEGATIVE_INFINITY;
+		if (entryTimeY > 1)
+			entryTimeY = Double.NEGATIVE_INFINITY;
 		return new Point2D[] { new Point2D(entryTimeX, entryTimeY), new Point2D(exitTimeX, exitTimeY) };
 	}
 }

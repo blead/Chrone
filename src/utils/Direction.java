@@ -3,7 +3,7 @@ package utils;
 import javafx.geometry.Point2D;
 
 public enum Direction {
-	UP(0, 0, -1), RIGHT(1, 1, 0), DOWN(2, 0, 1), LEFT(3, -1, 0), NONE(-1, 0, 0);
+	UP(0, 0, -1), RIGHT(1, 1, 0), DOWN(2, 0, 1), LEFT(3, -1, 0), NONE(-1, 0, 0), ALL(-2, 1, 1), DIAGONAL(-3, 0, 0);
 
 	private final int rotate90, rotate180, rotate270;
 	private final boolean isHorizontal, isVertical;
@@ -20,9 +20,9 @@ public enum Direction {
 	}
 
 	public static Direction fromPoint2D(Point2D direction) {
-		if (direction.getX() == 0)
+		if (direction.getX() == 0 && direction.getY() != 0)
 			return direction.getY() < 0 ? Direction.UP : Direction.DOWN;
-		if (direction.getY() == 0)
+		if (direction.getY() == 0 && direction.getX() != 0)
 			return direction.getX() < 0 ? Direction.LEFT : Direction.RIGHT;
 		return Direction.NONE;
 	}
@@ -55,4 +55,9 @@ public enum Direction {
 		return dy;
 	}
 
+	public boolean isPerpendicularTo(Direction direction) {
+		if (dx == dy)
+			return false;
+		return (isHorizontal && direction.isVertical()) || (isVertical && direction.isHorizontal());
+	}
 }

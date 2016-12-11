@@ -16,14 +16,20 @@ public class MoveIntent implements Intent {
 	public void handle(Entity entity) {
 		try {
 			VelocityComponent velocityComponent = (VelocityComponent) entity.getComponent(VelocityComponent.class);
-			Point2D velocity = velocityComponent.getVelocity().add(acceleration);
-			if (Math.abs(velocity.getX()) > maxVelocity.getX())
-				velocity = new Point2D(Math.copySign(maxVelocity.getX(), velocity.getX()), velocity.getY());
-			if (Math.abs(velocity.getY()) > maxVelocity.getY())
-				velocity = new Point2D(velocity.getX(), Math.copySign(maxVelocity.getY(), velocity.getY()));
-			velocityComponent.setVelocity(velocity);
+			velocityComponent.setVelocity(getVelocity(velocityComponent.getVelocity(), acceleration, maxVelocity));
 		} catch (ComponentNotFoundException e) {
 			throw new IllegalArgumentException();
 		}
+	}
+
+	public Point2D getVelocity(Point2D velocity, Point2D acceleration, Point2D maxVelocity) {
+		Point2D acceleratedVelocity = velocity.add(acceleration);
+		if (Math.abs(acceleratedVelocity.getX()) > maxVelocity.getX())
+			acceleratedVelocity = new Point2D(Math.copySign(maxVelocity.getX(), acceleratedVelocity.getX()),
+					acceleratedVelocity.getY());
+		if (Math.abs(acceleratedVelocity.getY()) > maxVelocity.getY())
+			acceleratedVelocity = new Point2D(acceleratedVelocity.getX(),
+					Math.copySign(maxVelocity.getY(), acceleratedVelocity.getY()));
+		return acceleratedVelocity;
 	}
 }

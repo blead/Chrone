@@ -23,7 +23,7 @@ public class Player extends Entity {
 	public static final double HEIGHT = Level.TILE_SIZE / 2;
 	public static final Paint COLOR = Color.WHITE;
 	public static final double ACCELERATION_X = Level.TILE_SIZE / 10;
-	public static final double ACCELERATION_Y = Level.TILE_SIZE / 2;
+	public static final double ACCELERATION_Y = Level.TILE_SIZE / 2.5;
 	public static final Point2D MAX_VELOCITY = new Point2D(Level.TILE_SIZE, Double.POSITIVE_INFINITY);
 
 	public Player() {

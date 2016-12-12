@@ -15,7 +15,9 @@ import javafx.stage.Stage;
 import systems.CameraSystem;
 import systems.CollisionSystem;
 import systems.ContactSystem;
+import systems.DelayedInputSystem;
 import systems.GravitySystem;
+import systems.InputRecorderSystem;
 import systems.InputSystem;
 import systems.MovementSystem;
 import systems.RenderSystem;
@@ -82,8 +84,9 @@ public class Main extends Application {
 		primaryStage.setScene(new Scene(applicationRoot));
 		primaryStage.show();
 		LevelManager.getInstance().load();
-		EntitySystemManager.getInstance().add(new InputSystem(), new GravitySystem(), new CollisionSystem(),
-				new MovementSystem(), new ContactSystem(), new CameraSystem(), new RenderSystem());
+		EntitySystemManager.getInstance().add(new InputRecorderSystem(), new InputSystem(), new DelayedInputSystem(),
+				new GravitySystem(), new CollisionSystem(), new MovementSystem(), new ContactSystem(),
+				new CameraSystem(), new RenderSystem());
 		isRunning = true;
 		primaryStage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override

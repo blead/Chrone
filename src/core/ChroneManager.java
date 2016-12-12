@@ -1,27 +1,30 @@
 package core;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 
 import entities.Anchor;
+import entities.DynamicChrone;
 import entities.StaticChrone;
-import intents.Intent;
 import javafx.geometry.Point2D;
+import javafx.scene.input.KeyCode;
 
 public class ChroneManager {
 	public static final int MAX_ANCHOR = 1;
 	public static final int MAX_STATIC_CHRONE = 1;
+	public static final int MAX_DYNAMIC_CHRONE = 1;
+	public static final int STATIC_CHRONE_DURATION = 1;
+	public static final int DYNAMIC_CHRONE_DURATION = 180;
 	private static ChroneManager instance = null;
-	private List<List<Intent>> intents;
 	private Queue<Anchor> anchors;
 	private Queue<StaticChrone> staticChrones;
+	private Queue<DynamicChrone> dynamicChrones;
 
 	private ChroneManager() {
-		intents = new ArrayList<>();
 		anchors = new ArrayDeque<>();
 		staticChrones = new ArrayDeque<>();
+		dynamicChrones = new ArrayDeque<>();
 	}
 
 	public static ChroneManager getInstance() {
@@ -30,33 +33,73 @@ public class ChroneManager {
 		return instance;
 	}
 
+	public static int getMaxDuration() {
+		return Math.max(ChroneManager.STATIC_CHRONE_DURATION, ChroneManager.DYNAMIC_CHRONE_DURATION);
+	}
+
 	public void createAnchor(Point2D position) {
-		Anchor anchor;
-		if (anchors.size() >= ChroneManager.MAX_ANCHOR) {
-			synchronized (anchors) {
-				anchor = anchors.poll();
-			}
-			EntityManager.getInstance().remove(anchor);
-		}
-		anchor = new Anchor(position);
+		if (anchors.size() >= ChroneManager.MAX_ANCHOR)
+			removeAnchor();
+		addAnchor(new Anchor(position));
+	}
+
+	public void createStaticChrone(Point2D position) {
+		removeAnchor();
+		if (staticChrones.size() >= ChroneManager.MAX_STATIC_CHRONE)
+			removeStaticChrone();
+		addStaticChrone(new StaticChrone(position));
+	}
+
+	public void createDynamicChrone(Point2D position, Queue<Set<KeyCode>> pressedRecord,
+			Queue<Set<KeyCode>> triggeredRecord) {
+		removeAnchor();
+		if (dynamicChrones.size() >= ChroneManager.MAX_DYNAMIC_CHRONE)
+			removeDynamicChrone();
+		addDynamicChrone(new DynamicChrone(position, pressedRecord, triggeredRecord));
+	}
+
+	private void addAnchor(Anchor anchor) {
 		synchronized (anchors) {
 			anchors.add(anchor);
 		}
 		EntityManager.getInstance().add(anchor);
 	}
 
-	public void createStaticChrone(Point2D position) {
-		StaticChrone staticChrone;
-		if (staticChrones.size() >= ChroneManager.MAX_STATIC_CHRONE) {
-			synchronized (staticChrones) {
-				staticChrone = staticChrones.poll();
-			}
-			EntityManager.getInstance().remove(staticChrone);
+	private void removeAnchor() {
+		Anchor anchor;
+		synchronized (anchors) {
+			anchor = anchors.remove();
 		}
-		staticChrone = new StaticChrone(position);
+		EntityManager.getInstance().remove(anchor);
+	}
+
+	private void addStaticChrone(StaticChrone staticChrone) {
 		synchronized (staticChrones) {
 			staticChrones.add(staticChrone);
 		}
 		EntityManager.getInstance().add(staticChrone);
+	}
+
+	private void removeStaticChrone() {
+		StaticChrone staticChrone;
+		synchronized (staticChrones) {
+			staticChrone = staticChrones.remove();
+		}
+		EntityManager.getInstance().remove(staticChrone);
+	}
+
+	private void addDynamicChrone(DynamicChrone dynamicChrone) {
+		synchronized (dynamicChrones) {
+			dynamicChrones.add(dynamicChrone);
+		}
+		EntityManager.getInstance().add(dynamicChrone);
+	}
+
+	private void removeDynamicChrone() {
+		DynamicChrone dynamicChrone;
+		synchronized (dynamicChrones) {
+			dynamicChrone = dynamicChrones.remove();
+		}
+		EntityManager.getInstance().remove(dynamicChrone);
 	}
 }

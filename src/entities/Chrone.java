@@ -1,5 +1,6 @@
 package entities;
 
+import components.CameraComponent;
 import components.CollisionComponent;
 import components.GravityComponent;
 import components.PositionComponent;
@@ -21,6 +22,7 @@ public abstract class Chrone extends Entity {
 
 	public Chrone(double positionX, double positionY, double velocityX, double velocityY) {
 		add(new PositionComponent(positionX, positionY), new VelocityComponent(velocityX, velocityY),
-				new GravityComponent(), new CollisionComponent(new Rectangle(Player.WIDTH, Player.HEIGHT)));
+				new GravityComponent(), new CollisionComponent(new Rectangle(Player.WIDTH, Player.HEIGHT)),
+				new CameraComponent(2));
 	}
 }

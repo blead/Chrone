@@ -10,7 +10,7 @@ import utils.ComponentNotFoundException;
 
 public class InputSystem extends EntitySystem {
 	public InputSystem() {
-		super(12);
+		super(14);
 	}
 
 	@Override

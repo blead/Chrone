@@ -4,6 +4,8 @@ import core.EntitySystemManager;
 import core.InputManager;
 import core.Level;
 import core.LevelManager;
+import intents.OpenLevelIntent;
+import intents.RestartIntent;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -23,7 +25,6 @@ import systems.InputRecorderSystem;
 import systems.InputSystem;
 import systems.MovementSystem;
 import systems.RenderSystem;
-import utils.RestartIntent;
 
 public class Main extends Application {
 	public static final String TITLE = "Chrone";
@@ -31,6 +32,7 @@ public class Main extends Application {
 	public static final int WIDTH = 1600;
 	public static final int HEIGHT = 900;
 	public static Main instance = null;
+	private Stage primaryStage;
 	private Pane applicationRoot;
 	private Canvas background;
 	private Canvas game;
@@ -51,6 +53,10 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	public Stage getPrimaryStage() {
+		return primaryStage;
 	}
 
 	public Pane getApplicationRoot() {
@@ -76,6 +82,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		LevelManager.getInstance().setLevel(new Level(LevelManager.LEVEL_ONE));
+		this.primaryStage = primaryStage;
 		background = new Canvas();
 		game = new Canvas();
 		applicationRoot = new Pane();
@@ -104,6 +111,7 @@ public class Main extends Application {
 		});
 
 		InputManager.getInstance().setTriggeredIntent(KeyCode.R, new RestartIntent());
+		InputManager.getInstance().setTriggeredIntent(KeyCode.O, new OpenLevelIntent());
 
 		gameLoop = new Thread(new Runnable() {
 			@Override

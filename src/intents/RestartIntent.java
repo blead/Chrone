@@ -1,8 +1,7 @@
-package utils;
+package intents;
 
 import core.LevelManager;
 import entities.Entity;
-import intents.Intent;
 
 public class RestartIntent implements Intent {
 	@Override

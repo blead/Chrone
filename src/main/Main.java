@@ -28,7 +28,8 @@ public class Main extends Application {
 	public static final int HEIGHT = 900;
 	public static Main instance = null;
 	private Pane applicationRoot;
-	private Canvas gameRoot;
+	private Canvas background;
+	private Canvas game;
 	private Thread gameLoop;
 	private boolean isRunning;
 
@@ -52,8 +53,12 @@ public class Main extends Application {
 		return applicationRoot;
 	}
 
-	public Canvas getGameRoot() {
-		return gameRoot;
+	public Canvas getBackground() {
+		return background;
+	}
+
+	public Canvas getGame() {
+		return game;
 	}
 
 	public boolean isRunning() {
@@ -67,10 +72,11 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		LevelManager.getInstance().setLevel(new Level(LevelManager.LEVEL_ONE));
-		gameRoot = new Canvas();
+		background = new Canvas();
+		game = new Canvas();
 		applicationRoot = new Pane();
 		applicationRoot.setPrefSize(Main.WIDTH, Main.HEIGHT);
-		applicationRoot.getChildren().add(gameRoot);
+		applicationRoot.getChildren().addAll(background, game);
 		primaryStage.setTitle(Main.TITLE);
 		primaryStage.setResizable(Main.IS_RESIZABLE);
 		primaryStage.setScene(new Scene(applicationRoot));
@@ -79,7 +85,6 @@ public class Main extends Application {
 		EntitySystemManager.getInstance().add(new InputSystem(), new GravitySystem(), new CollisionSystem(),
 				new MovementSystem(), new ContactSystem(), new CameraSystem(), new RenderSystem());
 		isRunning = true;
-
 		primaryStage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent keyEvent) {

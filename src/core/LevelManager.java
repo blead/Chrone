@@ -3,6 +3,8 @@ package core;
 import entities.Block;
 import entities.Player;
 import javafx.application.Platform;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.image.Image;
 import main.Main;
 
 public class LevelManager {
@@ -13,6 +15,7 @@ public class LevelManager {
 			"000001110000000000011100011000", "111111110011110001111100111111" };
 	private static LevelManager instance = null;
 	private Level level;
+	private Image background;
 
 	private LevelManager() {
 		level = null;
@@ -29,11 +32,22 @@ public class LevelManager {
 			throw new NullPointerException();
 		EntityManager.getInstance().clear();
 		String[] data = level.getData();
+		Canvas background = Main.getInstance().getBackground(), game = Main.getInstance().getGame();
+		try {
+			this.background = new Image(level.getBackground());
+		} catch (NullPointerException e) {
+			System.out.println(e + "\nusing default background image instead");
+			this.background = new Image(Level.DEFAULT_BACKGROUND);
+		}
+		double backgroundWidth = Math.max(this.background.getWidth(), Main.WIDTH),
+				backgroundHeight = Math.max(this.background.getHeight(), Main.HEIGHT);
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				Main.getInstance().getGameRoot().setWidth(level.getWidth());
-				Main.getInstance().getGameRoot().setHeight(level.getHeight());
+				background.setWidth(backgroundWidth);
+				background.setHeight(backgroundHeight);
+				game.setWidth(level.getWidth());
+				game.setHeight(level.getHeight());
 			}
 		});
 		for (int i = 0; i < data.length; i++) {
@@ -57,5 +71,13 @@ public class LevelManager {
 
 	public void setLevel(Level level) {
 		this.level = level;
+	}
+
+	public Image getBackground() {
+		return background;
+	}
+
+	public void setBackground(Image background) {
+		this.background = background;
 	}
 }

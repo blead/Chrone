@@ -19,10 +19,12 @@ public class RenderSystem extends EntitySystem {
 
 	@Override
 	public void update(double deltaTime) {
-		GraphicsContext gc = Main.getInstance().getGameRoot().getGraphicsContext2D();
+		GraphicsContext bg = Main.getInstance().getBackground().getGraphicsContext2D(),
+				gc = Main.getInstance().getGame().getGraphicsContext2D();
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
+				bg.drawImage(LevelManager.getInstance().getBackground(), 0, 0);
 				gc.clearRect(0, 0, LevelManager.getInstance().getLevel().getWidth(),
 						LevelManager.getInstance().getLevel().getHeight());
 			}

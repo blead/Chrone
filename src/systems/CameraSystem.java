@@ -12,6 +12,7 @@ import core.EntitySystem;
 import core.LevelManager;
 import javafx.application.Platform;
 import javafx.geometry.Point2D;
+import javafx.scene.canvas.Canvas;
 import main.Main;
 import utils.ComponentNotFoundException;
 import utils.PrioritizedPoint2D;
@@ -39,11 +40,16 @@ public class CameraSystem extends EntitySystem {
 		Point2D viewportPosition = getAdjustedViewportPosition(
 				getViewportPosition(anchorPositions, Main.WIDTH, Main.HEIGHT), Main.WIDTH, Main.HEIGHT,
 				LevelManager.getInstance().getLevel().getWidth(), LevelManager.getInstance().getLevel().getHeight());
+		Canvas background = Main.getInstance().getBackground(), game = Main.getInstance().getGame();
+		Point2D backgroundTranslate = getBackgroundTranslate(viewportPosition, Main.WIDTH, Main.HEIGHT,
+				background.getWidth(), background.getHeight());
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				Main.getInstance().getGameRoot().setTranslateX(-viewportPosition.getX());
-				Main.getInstance().getGameRoot().setTranslateY(-viewportPosition.getY());
+				background.setTranslateX(backgroundTranslate.getX());
+				background.setTranslateY(backgroundTranslate.getY());
+				game.setTranslateX(-viewportPosition.getX());
+				game.setTranslateY(-viewportPosition.getY());
 			}
 		});
 	}
@@ -98,5 +104,21 @@ public class CameraSystem extends EntitySystem {
 				viewportPosition = viewportPosition.subtract(0, viewportPosition.getY() + viewportHeight - levelHeight);
 		}
 		return viewportPosition;
+	}
+
+	private Point2D getBackgroundTranslate(Point2D viewportPosition, double viewportWidth, double viewportHeight,
+			double backgroundWidth, double backgroundHeight) {
+		Point2D offset = new Point2D(backgroundWidth - viewportWidth, backgroundHeight - viewportHeight).multiply(0.5),
+				ratio = new Point2D(viewportWidth / backgroundWidth, viewportHeight / backgroundHeight);
+		double translateX, translateY;
+		if (ratio.getX() >= 1)
+			translateX = viewportPosition.getX() - offset.getX();
+		else
+			translateX = -ratio.getX() * viewportPosition.getX() - offset.getX();
+		if (ratio.getY() >= 1)
+			translateY = viewportPosition.getY() - offset.getY();
+		else
+			translateY = -ratio.getY() * viewportPosition.getY() - offset.getY();
+		return new Point2D(translateX, translateY);
 	}
 }

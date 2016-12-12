@@ -16,6 +16,17 @@ public class InputSystem extends EntitySystem {
 
 	@Override
 	public void update(double deltaTime) {
+		// global Intents
+		for (KeyCode keyCode : InputManager.getInstance().getPressed()) {
+			Intent intent = InputManager.getInstance().getPressedIntent(keyCode);
+			if (intent != null)
+				intent.handle(null);
+		}
+		for (KeyCode keyCode : InputManager.getInstance().getTriggered()) {
+			Intent intent = InputManager.getInstance().getTriggeredIntent(keyCode);
+			if (intent != null)
+				intent.handle(null);
+		}
 		// entity-modifying intents
 		for (Entity entity : EntityManager.getInstance().getEntities()) {
 			try {
@@ -33,17 +44,6 @@ public class InputSystem extends EntitySystem {
 			} catch (ComponentNotFoundException e) {
 				continue;
 			}
-		}
-		// global Intents
-		for (KeyCode keyCode : InputManager.getInstance().getPressed()) {
-			Intent intent = InputManager.getInstance().getPressedIntent(keyCode);
-			if (intent != null)
-				intent.handle(null);
-		}
-		for (KeyCode keyCode : InputManager.getInstance().getTriggered()) {
-			Intent intent = InputManager.getInstance().getTriggeredIntent(keyCode);
-			if (intent != null)
-				intent.handle(null);
 		}
 	}
 }

@@ -21,7 +21,6 @@ public class ContactSystem extends EntitySystem {
 		List<Entity> entities = EntityManager.getInstance().getEntities();
 		for (Entity entity : entities) {
 			try {
-				PositionComponent positionComponent = (PositionComponent) entity.getComponent(PositionComponent.class);
 				CollisionComponent collisionComponent = (CollisionComponent) entity
 						.getComponent(CollisionComponent.class);
 				collisionComponent.clearColliding();

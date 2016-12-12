@@ -17,9 +17,9 @@ public class GravitySystem extends EntitySystem {
 		for (Entity entity : EntityManager.getInstance().getEntities()) {
 			try {
 				VelocityComponent velocityComponent = (VelocityComponent) entity.getComponent(VelocityComponent.class);
-				GravityComponent gravityComponent = (GravityComponent) entity.getComponent(GravityComponent.class);
-				velocityComponent.setVelocity(
-						velocityComponent.getVelocity().add(LevelManager.getInstance().getLevel().getGravity()));
+				if (entity.contains(GravityComponent.class))
+					velocityComponent.setVelocity(
+							velocityComponent.getVelocity().add(LevelManager.getInstance().getLevel().getGravity()));
 			} catch (ComponentNotFoundException e) {
 				continue;
 			}

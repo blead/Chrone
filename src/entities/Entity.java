@@ -25,6 +25,10 @@ public class Entity implements Comparable<Entity> {
 			this.components.put(component.getClass(), component);
 	}
 
+	public void remove(Class<? extends Component> componentClass) {
+		this.components.remove(componentClass);
+	}
+
 	public void remove(Component... components) {
 		for (Component component : components)
 			this.components.remove(component.getClass());

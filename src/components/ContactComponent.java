@@ -14,6 +14,10 @@ public class ContactComponent extends Component {
 		this.targetComponent = targetComponent;
 	}
 
+	public boolean isContact() {
+		return !contacts.isEmpty();
+	}
+
 	public boolean isContact(Direction direction) {
 		return contacts.contains(direction);
 	}

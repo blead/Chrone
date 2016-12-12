@@ -1,18 +1,21 @@
 package core;
 
 import entities.Block;
+import entities.DoorBlock;
 import entities.Player;
+import entities.SwitchBlock;
 import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import main.Main;
+import utils.Code;
 
 public class LevelManager {
 	public static final String[] LEVEL_ONE = new String[] { "000000000000000000000000000000",
-			"000000000000000000000000000000", "000000000000000000000000000000", "0000P0000000000000000000000000",
+			"000000000000000000000000000000", "000000000000000000000000000000", "000020000000000000000000000000",
 			"000000000000000000000000000000", "000000000000000000000000000000", "000000000000000000000000000000",
-			"000111000000000000000000000000", "000000001110000000000000000000", "000002000000011100002000000000",
-			"000001110000000000011100011000", "111111110011110001111100111111" };
+			"0001B1000000000000000000000000", "00000000a110000000000000000000", "00000000000001A100000000000000",
+			"0000011b0000000000011100011000", "111a11110011110001111100111111" };
 	private static LevelManager instance = null;
 	private Level level;
 	private Image background;
@@ -52,15 +55,17 @@ public class LevelManager {
 		});
 		for (int i = 0; i < data.length; i++) {
 			for (int j = 0; j < data[i].length(); j++) {
-				switch (data[i].charAt(j)) {
-				case '0':
-					break;
-				case '1':
+				char code = data[i].charAt(j);
+				if (code == '1')
 					EntityManager.getInstance().add(new Block(Level.TILE_SIZE * j, Level.TILE_SIZE * i));
-					break;
-				case 'P':
+				else if (code == '2')
 					EntityManager.getInstance().add(new Player(Level.TILE_SIZE * j, Level.TILE_SIZE * i, 0, 0));
-				}
+				else if ('a' <= code && code <= 'z')
+					EntityManager.getInstance().add(new SwitchBlock(Level.TILE_SIZE * j, Level.TILE_SIZE * i,
+							Code.getCodeColor(Character.toUpperCase(code)), Character.toUpperCase(code)));
+				else if ('A' <= code && code <= 'Z')
+					EntityManager.getInstance().add(
+							new DoorBlock(Level.TILE_SIZE * j, Level.TILE_SIZE * i, Code.getCodeColor(code), code));
 			}
 		}
 	}

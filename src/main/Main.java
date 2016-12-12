@@ -16,6 +16,7 @@ import systems.CameraSystem;
 import systems.CollisionSystem;
 import systems.ContactSystem;
 import systems.DelayedInputSystem;
+import systems.DoorSwitchSystem;
 import systems.GravitySystem;
 import systems.InputRecorderSystem;
 import systems.InputSystem;
@@ -86,7 +87,7 @@ public class Main extends Application {
 		LevelManager.getInstance().load();
 		EntitySystemManager.getInstance().add(new InputRecorderSystem(), new InputSystem(), new DelayedInputSystem(),
 				new GravitySystem(), new CollisionSystem(), new MovementSystem(), new ContactSystem(),
-				new CameraSystem(), new RenderSystem());
+				new DoorSwitchSystem(), new CameraSystem(), new RenderSystem());
 		isRunning = true;
 		primaryStage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override

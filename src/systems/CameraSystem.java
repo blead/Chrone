@@ -71,7 +71,7 @@ public class CameraSystem extends EntitySystem {
 					break;
 				}
 			}
-			Point2D offset = new Point2D(viewportWidth - (maxPosition.getX() - minPosition.getX()) / 2,
+			Point2D offset = new Point2D((viewportWidth - (maxPosition.getX() - minPosition.getX())) / 2,
 					(viewportHeight - (maxPosition.getY() - minPosition.getY())) / 2);
 			return minPosition.subtract(offset);
 		} else {

@@ -5,6 +5,7 @@ import components.RenderComponent;
 import core.Entity;
 import core.EntityManager;
 import core.EntitySystem;
+import core.LevelManager;
 import javafx.application.Platform;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
@@ -22,7 +23,8 @@ public class RenderSystem extends EntitySystem {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				gc.clearRect(0, 0, Main.WIDTH, Main.HEIGHT);
+				gc.clearRect(0, 0, LevelManager.getInstance().getLevel().getWidth(),
+						LevelManager.getInstance().getLevel().getHeight());
 			}
 		});
 		for (Entity entity : EntityManager.getInstance().getEntities()) {

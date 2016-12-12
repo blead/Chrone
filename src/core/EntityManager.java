@@ -20,28 +20,37 @@ public class EntityManager {
 	}
 
 	public List<Entity> getEntities() {
-		return Collections.unmodifiableList(entities);
+		return new ArrayList<>(entities);
 	}
 
 	public void add(Entity... entities) {
 		for (Entity entity : entities)
-			this.entities.add(entity);
-		sort();
+			synchronized (this.entities) {
+				this.entities.add(entity);
+			}
 	}
 
 	public void addAll(List<Entity> entities) {
-		this.entities.addAll(entities);
+		synchronized (this.entities) {
+			this.entities.addAll(entities);
+		}
 	}
 
 	public void remove(Entity... entities) {
-		this.entities.removeAll(Arrays.asList(entities));
+		synchronized (this.entities) {
+			this.entities.removeAll(Arrays.asList(entities));
+		}
 	}
 
 	public void clear() {
-		entities.clear();
+		synchronized (entities) {
+			entities.clear();
+		}
 	}
 
 	public void sort() {
-		Collections.sort(entities);
+		synchronized (entities) {
+			Collections.sort(entities);
+		}
 	}
 }

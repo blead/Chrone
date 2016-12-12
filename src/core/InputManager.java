@@ -1,6 +1,5 @@
 package core;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -28,48 +27,74 @@ public class InputManager {
 	}
 
 	public Set<KeyCode> getPressed() {
-		return Collections.unmodifiableSet(pressed);
+		synchronized (pressed) {
+			return new HashSet<>(pressed);
+		}
 	}
 
 	public boolean isPressed(KeyCode keyCode) {
-		return pressed.contains(keyCode);
+		synchronized (pressed) {
+			return pressed.contains(keyCode);
+		}
 	}
 
 	public void setPressed(KeyCode keyCode, boolean isPressed) {
 		if (isPressed) {
-			if (pressed.add(keyCode)) {
-				triggered.add(keyCode);
+			boolean isTriggered = false;
+			synchronized (pressed) {
+				isTriggered = pressed.add(keyCode);
+			}
+			if (isTriggered) {
+				synchronized (triggered) {
+					triggered.add(keyCode);
+				}
 			}
 		} else {
-			pressed.remove(keyCode);
+			synchronized (pressed) {
+				pressed.remove(keyCode);
+			}
 		}
 	}
 
 	public Set<KeyCode> getTriggered() {
-		return Collections.unmodifiableSet(triggered);
+		synchronized (triggered) {
+			return new HashSet<>(triggered);
+		}
 	}
 
 	public boolean isTriggered(KeyCode keyCode) {
-		return triggered.contains(keyCode);
+		synchronized (triggered) {
+			return triggered.contains(keyCode);
+		}
 	}
 
 	public void clearTriggered() {
-		triggered.clear();
+		synchronized (triggered) {
+			triggered.clear();
+		}
 	}
 
 	public Intent getPressedIntent(KeyCode keyCode) {
-		return pressedIntents.get(keyCode);
+		synchronized (pressedIntents) {
+			return pressedIntents.get(keyCode);
+		}
 	}
 
 	public void setPressedIntent(KeyCode keyCode, Intent intent) {
-		pressedIntents.put(keyCode, intent);
+		synchronized (pressedIntents) {
+			pressedIntents.put(keyCode, intent);
+		}
 	}
 
 	public Intent getTriggeredIntent(KeyCode keyCode) {
-		return triggeredIntents.get(keyCode);
+		synchronized (triggeredIntents) {
+			return triggeredIntents.get(keyCode);
+		}
 	}
 
 	public void setTriggeredIntent(KeyCode keyCode, Intent intent) {
-		triggeredIntents.put(keyCode, intent);
+		synchronized (triggeredIntents) {
+			triggeredIntents.put(keyCode, intent);
+		}
 	}
 }

@@ -38,6 +38,7 @@ public class RenderSystem extends EntitySystem {
 					@Override
 					public void run() {
 						gc.setFill(renderComponent.getColor());
+						gc.setGlobalAlpha(renderComponent.getAlpha());
 						renderComponent.getShape().render(gc, drawingPosition.getX(), drawingPosition.getY());
 					}
 				});

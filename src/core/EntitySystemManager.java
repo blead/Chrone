@@ -19,16 +19,22 @@ public class EntitySystemManager {
 
 	public void add(EntitySystem... systems) {
 		for (EntitySystem system : systems)
-			this.systems.add(system);
+			synchronized (this.systems) {
+				this.systems.add(system);
+			}
 	}
 
 	public void remove(EntitySystem... systems) {
 		for (EntitySystem system : systems)
-			this.systems.remove(system);
+			synchronized (this.systems) {
+				this.systems.remove(system);
+			}
 	}
 
 	public void clear() {
-		systems.clear();
+		synchronized (systems) {
+			systems.clear();
+		}
 	}
 
 	public void update(double deltaTime) {

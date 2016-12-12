@@ -17,6 +17,7 @@ import javafx.scene.shape.Rectangle;
 import utils.JumpIntent;
 import utils.MoveIntent;
 import utils.RenderableRectangle;
+import utils.createAnchorIntent;
 
 public class Player extends Entity {
 	public static final double WIDTH = Level.TILE_SIZE / 2;
@@ -43,6 +44,7 @@ public class Player extends Entity {
 				new MoveIntent(new Point2D(-Player.ACCELERATION_X, 0), Player.MAX_VELOCITY));
 		inputComponent.setPressedIntent(KeyCode.UP,
 				new JumpIntent(new Point2D(0, -Player.ACCELERATION_Y), Player.MAX_VELOCITY));
+		inputComponent.setTriggeredIntent(KeyCode.A, new createAnchorIntent());
 		add(new RenderComponent(new RenderableRectangle(Player.WIDTH, Player.HEIGHT), Player.COLOR),
 				new PositionComponent(positionX, positionY), new VelocityComponent(velocityX, velocityY),
 				new GravityComponent(), new CollisionComponent(new Rectangle(Player.WIDTH, Player.HEIGHT)),

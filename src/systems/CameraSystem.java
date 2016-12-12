@@ -37,21 +37,22 @@ public class CameraSystem extends EntitySystem {
 				continue;
 			}
 		}
-		Point2D viewportPosition = getAdjustedViewportPosition(
-				getViewportPosition(anchorPositions, Main.WIDTH, Main.HEIGHT), Main.WIDTH, Main.HEIGHT,
+		Point2D viewportPosition = getViewportPosition(anchorPositions, Main.WIDTH, Main.HEIGHT,
 				LevelManager.getInstance().getLevel().getWidth(), LevelManager.getInstance().getLevel().getHeight());
 		Canvas background = Main.getInstance().getBackground(), game = Main.getInstance().getGame();
-		Point2D backgroundTranslate = getBackgroundTranslate(viewportPosition, Main.WIDTH, Main.HEIGHT,
-				background.getWidth(), background.getHeight());
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				background.setTranslateX(backgroundTranslate.getX());
-				background.setTranslateY(backgroundTranslate.getY());
-				game.setTranslateX(-viewportPosition.getX());
-				game.setTranslateY(-viewportPosition.getY());
-			}
-		});
+		if (viewportPosition != null) {
+			Point2D backgroundTranslate = getBackgroundTranslate(viewportPosition, Main.WIDTH, Main.HEIGHT,
+					background.getWidth(), background.getHeight());
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					background.setTranslateX(backgroundTranslate.getX());
+					background.setTranslateY(backgroundTranslate.getY());
+					game.setTranslateX(-viewportPosition.getX());
+					game.setTranslateY(-viewportPosition.getY());
+				}
+			});
+		}
 	}
 
 	private Point2D getAnchorPosition(Renderable shape, Point2D offset, Point2D position) {
@@ -59,7 +60,8 @@ public class CameraSystem extends EntitySystem {
 	}
 
 	private Point2D getViewportPosition(Queue<PrioritizedPoint2D> anchorPositions, double viewportWidth,
-			double viewportHeight) {
+			double viewportHeight, double levelWidth, double levelHeight) {
+		Point2D viewportPosition;
 		if (anchorPositions.size() > 0) {
 			Point2D minPosition = new Point2D(Double.MAX_VALUE, Double.MAX_VALUE),
 					maxPosition = new Point2D(Double.MIN_VALUE, Double.MIN_VALUE);
@@ -70,40 +72,42 @@ public class CameraSystem extends EntitySystem {
 						newMaxPosition = new Point2D(Math.max(maxPosition.getX(), newPosition.getX()),
 								Math.max(maxPosition.getY(), newPosition.getY()));
 				if (newMaxPosition.getX() - newMinPosition.getX() < viewportWidth
-						&& newMaxPosition.getY() - newMinPosition.getY() < viewportHeight) {
+						&& newMaxPosition.getY() - newMinPosition.getY() < viewportHeight && newMaxPosition.getX() >= 0
+						&& newMinPosition.getX() <= levelWidth && newMaxPosition.getY() >= 0
+						&& newMinPosition.getY() <= levelHeight) {
 					minPosition = newMinPosition;
 					maxPosition = newMaxPosition;
 				} else {
 					break;
 				}
 			}
-			Point2D offset = new Point2D((viewportWidth - (maxPosition.getX() - minPosition.getX())) / 2,
-					(viewportHeight - (maxPosition.getY() - minPosition.getY())) / 2);
-			return minPosition.subtract(offset);
-		} else {
-			return Point2D.ZERO;
+			if (minPosition.getX() != Double.MAX_VALUE && minPosition.getY() != Double.MAX_VALUE
+					&& maxPosition.getX() != Double.MIN_VALUE && maxPosition.getY() != Double.MIN_VALUE) {
+				Point2D offset = new Point2D((viewportWidth - (maxPosition.getX() - minPosition.getX())) / 2,
+						(viewportHeight - (maxPosition.getY() - minPosition.getY())) / 2);
+				viewportPosition = minPosition.subtract(offset);
+				if (viewportWidth > levelWidth) {
+					viewportPosition = viewportPosition.subtract((viewportWidth - levelWidth) / 2, 0);
+				} else {
+					if (viewportPosition.getX() < 0)
+						viewportPosition = viewportPosition.subtract(viewportPosition.getX(), 0);
+					if (viewportPosition.getX() + viewportWidth > levelWidth)
+						viewportPosition = viewportPosition
+								.subtract(viewportPosition.getX() + viewportWidth - levelWidth, 0);
+				}
+				if (viewportHeight > levelHeight) {
+					viewportPosition = viewportPosition.subtract(0, (viewportHeight - levelHeight) / 2);
+				} else {
+					if (viewportPosition.getY() < 0)
+						viewportPosition = viewportPosition.subtract(0, viewportPosition.getY());
+					if (viewportPosition.getY() + viewportHeight > levelHeight)
+						viewportPosition = viewportPosition.subtract(0,
+								viewportPosition.getY() + viewportHeight - levelHeight);
+				}
+				return viewportPosition;
+			}
 		}
-	}
-
-	private Point2D getAdjustedViewportPosition(Point2D viewportPosition, double viewportWidth, double viewportHeight,
-			double levelWidth, double levelHeight) {
-		if (viewportWidth > levelWidth) {
-			viewportPosition = viewportPosition.subtract((viewportWidth - levelWidth) / 2, 0);
-		} else {
-			if (viewportPosition.getX() < 0)
-				viewportPosition = viewportPosition.subtract(viewportPosition.getX(), 0);
-			if (viewportPosition.getX() + viewportWidth > levelWidth)
-				viewportPosition = viewportPosition.subtract(viewportPosition.getX() + viewportWidth - levelWidth, 0);
-		}
-		if (viewportHeight > levelHeight) {
-			viewportPosition = viewportPosition.subtract(0, (viewportHeight - levelHeight) / 2);
-		} else {
-			if (viewportPosition.getY() < 0)
-				viewportPosition = viewportPosition.subtract(0, viewportPosition.getY());
-			if (viewportPosition.getY() + viewportHeight > levelHeight)
-				viewportPosition = viewportPosition.subtract(0, viewportPosition.getY() + viewportHeight - levelHeight);
-		}
-		return viewportPosition;
+		return null;
 	}
 
 	private Point2D getBackgroundTranslate(Point2D viewportPosition, double viewportWidth, double viewportHeight,

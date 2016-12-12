@@ -45,5 +45,6 @@ public class InputSystem extends EntitySystem {
 				continue;
 			}
 		}
+		InputManager.getInstance().clearTriggered();
 	}
 }

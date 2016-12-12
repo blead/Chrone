@@ -112,7 +112,6 @@ public class Main extends Application {
 					// deltaTime in frame unit
 					if (deltaTime >= 1) {
 						EntitySystemManager.getInstance().update(deltaTime);
-						InputManager.getInstance().clearTriggered();
 						lastUpdateTime = now;
 					}
 					long timeUntilNextUpdate = (lastUpdateTime + timePerFrame - System.nanoTime()) / 1000000;

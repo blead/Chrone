@@ -10,7 +10,7 @@ public class Level {
 	public static final String DEFAULT_BACKGROUND = ClassLoader.getSystemResource("bg1.jpg").toString();
 	private final String[] data;
 	private final double width, height;
-	private Point2D gravity;
+	private double gravityX, gravityY;
 	private String background;
 
 	public Level(String[] data) {
@@ -21,7 +21,8 @@ public class Level {
 		this.data = data;
 		width = data[0].length() * Level.TILE_SIZE;
 		height = data.length * Level.TILE_SIZE;
-		this.gravity = gravity;
+		gravityX = gravity.getX();
+		gravityY = gravity.getY();
 		this.background = background;
 	}
 
@@ -48,11 +49,12 @@ public class Level {
 	}
 
 	public Point2D getGravity() {
-		return gravity;
+		return new Point2D(gravityX, gravityY);
 	}
 
 	public void setGravity(Point2D gravity) {
-		this.gravity = gravity;
+		gravityX = gravity.getX();
+		gravityY = gravity.getY();
 	}
 
 	public String getBackground() {

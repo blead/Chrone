@@ -3,18 +3,19 @@ package core;
 import com.google.gson.Gson;
 
 import javafx.geometry.Point2D;
+import javafx.scene.image.Image;
 
 public class Level {
 	public static final double TILE_SIZE = 60;
 	public static final Point2D DEFAULT_GRAVITY = new Point2D(0, 2);
-	public static final String DEFAULT_BACKGROUND = ClassLoader.getSystemResource("bg1.jpg").toString();
+	public static final Image DEFAULT_BACKGROUND = new Image(ClassLoader.getSystemResource("bg1.jpg").toString());
 	private final String[] data;
 	private final double width, height;
 	private double gravityX, gravityY;
 	private String background;
 
 	public Level(String[] data) {
-		this(data, Level.DEFAULT_GRAVITY, Level.DEFAULT_BACKGROUND);
+		this(data, Level.DEFAULT_GRAVITY, null);
 	}
 
 	public Level(String[] data, Point2D gravity, String background) {

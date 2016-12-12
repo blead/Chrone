@@ -39,8 +39,7 @@ public class LevelManager {
 		try {
 			this.background = new Image(level.getBackground());
 		} catch (NullPointerException e) {
-			System.out.println(e + "\nusing default background image instead");
-			this.background = new Image(Level.DEFAULT_BACKGROUND);
+			this.background = Level.DEFAULT_BACKGROUND;
 		}
 		double backgroundWidth = Math.max(this.background.getWidth(), Main.WIDTH),
 				backgroundHeight = Math.max(this.background.getHeight(), Main.HEIGHT);
@@ -49,8 +48,12 @@ public class LevelManager {
 			public void run() {
 				background.setWidth(backgroundWidth);
 				background.setHeight(backgroundHeight);
+				background.setTranslateX(0);
+				background.setTranslateY(0);
 				game.setWidth(level.getWidth());
 				game.setHeight(level.getHeight());
+				game.setTranslateX(0);
+				game.setTranslateY(0);
 			}
 		});
 		for (int i = 0; i < data.length; i++) {

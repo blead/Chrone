@@ -2,8 +2,10 @@ package entities;
 
 import components.CameraComponent;
 import components.CollisionComponent;
+import components.ContactComponent;
 import components.GravityComponent;
 import components.InputComponent;
+import components.JumpableSurfaceComponent;
 import components.PositionComponent;
 import components.RenderComponent;
 import components.VelocityComponent;
@@ -47,6 +49,6 @@ public class Player extends Entity {
 		add(new RenderComponent(new RenderableRectangle(Player.WIDTH, Player.HEIGHT), Player.COLOR),
 				new PositionComponent(positionX, positionY), new VelocityComponent(velocityX, velocityY),
 				new GravityComponent(), new CollisionComponent(new Rectangle(Player.WIDTH, Player.HEIGHT)),
-				new CameraComponent(), inputComponent);
+				new ContactComponent(JumpableSurfaceComponent.class), new CameraComponent(), inputComponent);
 	}
 }

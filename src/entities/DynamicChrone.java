@@ -3,8 +3,10 @@ package entities;
 import java.util.Queue;
 import java.util.Set;
 
+import components.ContactComponent;
 import components.DelayedInputComponent;
 import components.InputRecordComponent;
+import components.JumpableSurfaceComponent;
 import components.RenderComponent;
 import core.ChroneManager;
 import intents.JumpIntent;
@@ -37,7 +39,7 @@ public class DynamicChrone extends Chrone {
 		delayedInputComponent.setPressedIntent(KeyCode.UP,
 				new JumpIntent(new Point2D(0, -Player.ACCELERATION_Y), Player.MAX_VELOCITY));
 		add(new RenderComponent(new RenderableRectangle(Player.WIDTH, Player.HEIGHT), DynamicChrone.COLOR,
-				Chrone.ALPHA),
+				Chrone.ALPHA), new ContactComponent(JumpableSurfaceComponent.class),
 				new InputRecordComponent(pressedRecord, triggeredRecord, ChroneManager.DYNAMIC_CHRONE_DURATION),
 				delayedInputComponent);
 	}

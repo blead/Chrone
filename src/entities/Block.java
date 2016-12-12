@@ -1,6 +1,7 @@
 package entities;
 
 import components.CollisionComponent;
+import components.JumpableSurfaceComponent;
 import components.PositionComponent;
 import components.RenderComponent;
 import core.Level;
@@ -26,6 +27,6 @@ public class Block extends Entity {
 	public Block(double positionX, double positionY) {
 		add(new RenderComponent(new RenderableRectangle(Block.WIDTH, Block.HEIGHT), Block.COLOR),
 				new PositionComponent(positionX, positionY),
-				new CollisionComponent(new Rectangle(Block.WIDTH, Block.HEIGHT)));
+				new CollisionComponent(new Rectangle(Block.WIDTH, Block.HEIGHT)), new JumpableSurfaceComponent());
 	}
 }

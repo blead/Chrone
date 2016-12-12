@@ -3,6 +3,7 @@ package systems;
 import java.util.List;
 
 import components.CollisionComponent;
+import components.ContactComponent;
 import components.PositionComponent;
 import core.EntityManager;
 import entities.Entity;
@@ -20,23 +21,23 @@ public class ContactSystem extends EntitySystem {
 		List<Entity> entities = EntityManager.getInstance().getEntities();
 		for (Entity entity : entities) {
 			try {
-				CollisionComponent collisionComponent = (CollisionComponent) entity
-						.getComponent(CollisionComponent.class);
-				collisionComponent.clearColliding();
+				ContactComponent contactComponent = (ContactComponent) entity.getComponent(ContactComponent.class);
+				contactComponent.clearContacts();
 			} catch (ComponentNotFoundException e) {
 				continue;
 			}
 		}
-		for (int i = 0; i < entities.size() - 1; i++) {
-			Entity entity = entities.get(i);
+		for (Entity entity : entities) {
 			try {
 				PositionComponent positionComponent = (PositionComponent) entity.getComponent(PositionComponent.class);
 				CollisionComponent collisionComponent = (CollisionComponent) entity
 						.getComponent(CollisionComponent.class);
+				ContactComponent contactComponent = (ContactComponent) entity.getComponent(ContactComponent.class);
 				CollisionBox collisionBox = new CollisionBox(positionComponent.getPosition(),
 						collisionComponent.getCollisionShape());
-				for (int j = i + 1; j < entities.size(); j++) {
-					Entity other = entities.get(j);
+				for (Entity other : entities) {
+					if (entity.equals(other) || !other.contains(contactComponent.getTargetComponent()))
+						continue;
 					try {
 						PositionComponent otherPositionComponent = (PositionComponent) other
 								.getComponent(PositionComponent.class);
@@ -48,15 +49,13 @@ public class ContactSystem extends EntitySystem {
 						if (collisionBox.intersectsY(otherCollisionBox)) {
 							Direction contactDirectionX = collisionBox.getContactDirectionX(otherCollisionBox);
 							if (contactDirectionX != Direction.NONE) {
-								collisionComponent.setColliding(contactDirectionX);
-								otherCollisionComponent.setColliding(contactDirectionX.rotate180());
+								contactComponent.setContact(contactDirectionX);
 							}
 						}
 						if (collisionBox.intersectsX(otherCollisionBox)) {
 							Direction contactDirectionY = collisionBox.getContactDirectionY(otherCollisionBox);
 							if (contactDirectionY != Direction.NONE) {
-								collisionComponent.setColliding(contactDirectionY);
-								otherCollisionComponent.setColliding(contactDirectionY.rotate180());
+								contactComponent.setContact(contactDirectionY);
 							}
 						}
 					} catch (ComponentNotFoundException e) {

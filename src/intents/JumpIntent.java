@@ -1,6 +1,6 @@
 package intents;
 
-import components.CollisionComponent;
+import components.ContactComponent;
 import components.VelocityComponent;
 import entities.Entity;
 import javafx.geometry.Point2D;
@@ -16,9 +16,10 @@ public class JumpIntent extends MoveIntent {
 	public void handle(Entity entity) {
 		try {
 			VelocityComponent velocityComponent = (VelocityComponent) entity.getComponent(VelocityComponent.class);
-			CollisionComponent collisionComponent = (CollisionComponent) entity.getComponent(CollisionComponent.class);
-			if (collisionComponent.isColliding(Direction.DOWN))
+			ContactComponent contactComponent = (ContactComponent) entity.getComponent(ContactComponent.class);
+			if (contactComponent.isContact(Direction.DOWN)) {
 				velocityComponent.setVelocity(getVelocity(velocityComponent.getVelocity(), acceleration, maxVelocity));
+			}
 		} catch (ComponentNotFoundException e) {
 			throw new IllegalArgumentException();
 		}

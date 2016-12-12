@@ -1,29 +1,30 @@
-package utils;
+package intents;
 
-import components.CollisionComponent;
 import components.VelocityComponent;
-import core.Entity;
+import entities.Entity;
 import javafx.geometry.Point2D;
+import utils.ComponentNotFoundException;
 
-public class JumpIntent extends MoveIntent {
-	public JumpIntent(Point2D acceleration, Point2D maxVelocity) {
-		super(acceleration, maxVelocity);
+public class MoveIntent implements Intent {
+	protected Point2D acceleration, maxVelocity;
+
+	public MoveIntent(Point2D acceleration, Point2D maxVelocity) {
+		this.acceleration = acceleration;
+		this.maxVelocity = maxVelocity;
 	}
 
 	@Override
 	public void handle(Entity entity) {
 		try {
 			VelocityComponent velocityComponent = (VelocityComponent) entity.getComponent(VelocityComponent.class);
-			CollisionComponent collisionComponent = (CollisionComponent) entity.getComponent(CollisionComponent.class);
-			if (collisionComponent.isColliding(Direction.DOWN))
-				velocityComponent.setVelocity(getVelocity(velocityComponent.getVelocity(), acceleration, maxVelocity));
+			velocityComponent.setVelocity(getVelocity(velocityComponent.getVelocity(), acceleration, maxVelocity));
 		} catch (ComponentNotFoundException e) {
 			throw new IllegalArgumentException();
 		}
 	}
 
 	private Point2D getVelocity(Point2D velocity, Point2D acceleration, Point2D maxVelocity) {
-		Point2D acceleratedVelocity = new Point2D(velocity.getX() + acceleration.getX(), acceleration.getY());
+		Point2D acceleratedVelocity = velocity.add(acceleration);
 		if (Math.abs(acceleratedVelocity.getX()) > maxVelocity.getX())
 			acceleratedVelocity = new Point2D(Math.copySign(maxVelocity.getX(), acceleratedVelocity.getX()),
 					acceleratedVelocity.getY());

@@ -1,4 +1,4 @@
-package core;
+package components;
 
 public abstract class Component {
 

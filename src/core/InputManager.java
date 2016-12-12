@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import intents.Intent;
 import javafx.scene.input.KeyCode;
-import utils.Intent;
 
 public class InputManager {
 	private static InputManager instance = null;

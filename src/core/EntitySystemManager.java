@@ -3,6 +3,8 @@ package core;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import systems.EntitySystem;
+
 public class EntitySystemManager {
 	private static EntitySystemManager instance = null;
 	private SortedSet<EntitySystem> systems;

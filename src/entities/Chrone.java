@@ -4,7 +4,6 @@ import components.CollisionComponent;
 import components.GravityComponent;
 import components.PositionComponent;
 import components.VelocityComponent;
-import core.Entity;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Rectangle;
 

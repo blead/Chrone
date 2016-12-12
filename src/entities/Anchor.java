@@ -4,12 +4,11 @@ import components.CameraComponent;
 import components.InputComponent;
 import components.PositionComponent;
 import components.RenderComponent;
-import core.Entity;
 import core.Level;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import utils.RenderableDiamond;
+import renderables.RenderableDiamond;
 
 public class Anchor extends Entity {
 	public static final double WIDTH = Level.TILE_SIZE / 3;

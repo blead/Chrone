@@ -1,4 +1,4 @@
-package core;
+package systems;
 
 public abstract class EntitySystem implements Comparable<EntitySystem> {
 	private int priority;

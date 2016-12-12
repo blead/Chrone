@@ -3,7 +3,6 @@ package components;
 import java.util.HashSet;
 import java.util.Set;
 
-import core.Component;
 import javafx.scene.shape.Shape;
 import utils.Direction;
 

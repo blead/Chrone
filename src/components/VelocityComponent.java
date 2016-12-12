@@ -1,6 +1,5 @@
 package components;
 
-import core.Component;
 import javafx.geometry.Point2D;
 
 public class VelocityComponent extends Component {

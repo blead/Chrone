@@ -7,17 +7,16 @@ import components.InputComponent;
 import components.PositionComponent;
 import components.RenderComponent;
 import components.VelocityComponent;
-import core.Entity;
 import core.Level;
+import intents.JumpIntent;
+import intents.MoveIntent;
+import intents.createAnchorIntent;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
-import utils.JumpIntent;
-import utils.MoveIntent;
-import utils.RenderableRectangle;
-import utils.createAnchorIntent;
+import renderables.RenderableRectangle;
 
 public class Player extends Entity {
 	public static final double WIDTH = Level.TILE_SIZE / 2;

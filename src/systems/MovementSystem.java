@@ -2,9 +2,8 @@ package systems;
 
 import components.PositionComponent;
 import components.VelocityComponent;
-import core.Entity;
 import core.EntityManager;
-import core.EntitySystem;
+import entities.Entity;
 import javafx.geometry.Point2D;
 import utils.ComponentNotFoundException;
 

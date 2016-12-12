@@ -1,13 +1,12 @@
 package systems;
 
 import components.InputComponent;
-import core.Entity;
 import core.EntityManager;
-import core.EntitySystem;
 import core.InputManager;
+import entities.Entity;
+import intents.Intent;
 import javafx.scene.input.KeyCode;
 import utils.ComponentNotFoundException;
-import utils.Intent;
 
 public class InputSystem extends EntitySystem {
 	public InputSystem() {

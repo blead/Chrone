@@ -2,9 +2,8 @@ package components;
 
 import java.util.HashMap;
 
-import core.Component;
+import intents.Intent;
 import javafx.scene.input.KeyCode;
-import utils.Intent;
 
 public class InputComponent extends Component {
 	private HashMap<KeyCode, Intent> pressedIntents;

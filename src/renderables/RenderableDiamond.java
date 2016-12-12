@@ -1,4 +1,4 @@
-package utils;
+package renderables;
 
 import javafx.scene.canvas.GraphicsContext;
 

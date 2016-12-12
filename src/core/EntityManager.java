@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import entities.Entity;
+
 public class EntityManager {
 	private static EntityManager instance = null;
 	private List<Entity> entities;

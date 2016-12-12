@@ -1,8 +1,10 @@
-package core;
+package entities;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import components.Component;
+import core.EntityManager;
 import utils.ComponentNotFoundException;
 
 public class Entity implements Comparable<Entity> {

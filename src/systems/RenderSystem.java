@@ -2,10 +2,9 @@ package systems;
 
 import components.PositionComponent;
 import components.RenderComponent;
-import core.Entity;
 import core.EntityManager;
-import core.EntitySystem;
 import core.LevelManager;
+import entities.Entity;
 import javafx.application.Platform;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;

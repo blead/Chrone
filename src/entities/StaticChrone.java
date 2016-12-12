@@ -1,12 +1,10 @@
-package core;
+package entities;
 
 import components.RenderComponent;
-import entities.Chrone;
-import entities.Player;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import utils.RenderableRectangle;
+import renderables.RenderableRectangle;
 
 public class StaticChrone extends Chrone {
 	public static final Paint COLOR = Color.RED;

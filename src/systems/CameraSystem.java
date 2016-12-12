@@ -6,17 +6,16 @@ import java.util.Queue;
 import components.CameraComponent;
 import components.PositionComponent;
 import components.RenderComponent;
-import core.Entity;
 import core.EntityManager;
-import core.EntitySystem;
 import core.LevelManager;
+import entities.Entity;
 import javafx.application.Platform;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import main.Main;
+import renderables.Renderable;
 import utils.ComponentNotFoundException;
 import utils.PrioritizedPoint2D;
-import utils.Renderable;
 
 public class CameraSystem extends EntitySystem {
 	public CameraSystem() {

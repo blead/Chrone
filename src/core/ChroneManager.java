@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Queue;
 
 import entities.Anchor;
+import entities.StaticChrone;
+import intents.Intent;
 import javafx.geometry.Point2D;
-import utils.Intent;
 
 public class ChroneManager {
 	public static final int MAX_ANCHOR = 1;

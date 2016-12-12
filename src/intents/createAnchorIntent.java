@@ -1,8 +1,9 @@
-package utils;
+package intents;
 
 import components.PositionComponent;
 import core.ChroneManager;
-import core.Entity;
+import entities.Entity;
+import utils.ComponentNotFoundException;
 
 public class createAnchorIntent implements Intent {
 	@Override

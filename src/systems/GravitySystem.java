@@ -2,10 +2,9 @@ package systems;
 
 import components.GravityComponent;
 import components.VelocityComponent;
-import core.Entity;
 import core.EntityManager;
-import core.EntitySystem;
 import core.LevelManager;
+import entities.Entity;
 import utils.ComponentNotFoundException;
 
 public class GravitySystem extends EntitySystem {

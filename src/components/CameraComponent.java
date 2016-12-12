@@ -1,7 +1,5 @@
 package components;
 
-import core.Component;
-
 public class CameraComponent extends Component {
 	private int priority;
 

@@ -1,9 +1,8 @@
 package components;
 
-import core.Component;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Paint;
-import utils.Renderable;
+import renderables.Renderable;
 
 public class RenderComponent extends Component {
 	private Renderable shape;

@@ -4,9 +4,8 @@ import java.util.List;
 
 import components.CollisionComponent;
 import components.PositionComponent;
-import core.Entity;
 import core.EntityManager;
-import core.EntitySystem;
+import entities.Entity;
 import utils.CollisionBox;
 import utils.ComponentNotFoundException;
 import utils.Direction;

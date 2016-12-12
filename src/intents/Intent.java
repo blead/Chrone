@@ -1,6 +1,6 @@
-package utils;
+package intents;
 
-import core.Entity;
+import entities.Entity;
 
 public interface Intent {
 	public abstract void handle(Entity entity);

@@ -3,7 +3,7 @@ package utils;
 import javafx.geometry.Point2D;
 
 public enum Direction {
-	UP(0, 0, -1), RIGHT(1, 1, 0), DOWN(2, 0, 1), LEFT(3, -1, 0), NONE(-1, 0, 0), ALL(-2, 1, 1), DIAGONAL(-3, 0, 0);
+	UP(0, 0, -1), RIGHT(1, 1, 0), DOWN(2, 0, 1), LEFT(3, -1, 0), NONE(-1, 0, 0), ALL(-2, 1, 1), DIAGONAL(-3, 1, 1);
 
 	private final int rotate90, rotate180, rotate270;
 	private final boolean isHorizontal, isVertical;
@@ -56,7 +56,7 @@ public enum Direction {
 	}
 
 	public boolean isPerpendicularTo(Direction direction) {
-		if (dx == dy)
+		if (dx == dy || direction.getDx() == direction.getDy())
 			return false;
 		return (isHorizontal && direction.isVertical()) || (isVertical && direction.isHorizontal());
 	}

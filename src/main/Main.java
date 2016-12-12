@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import systems.CameraSystem;
 import systems.CollisionSystem;
+import systems.ContactSystem;
 import systems.GravitySystem;
 import systems.InputSystem;
 import systems.MovementSystem;
@@ -76,7 +77,7 @@ public class Main extends Application {
 		primaryStage.show();
 		LevelManager.getInstance().load();
 		EntitySystemManager.getInstance().add(new InputSystem(), new GravitySystem(), new CollisionSystem(),
-				new MovementSystem(), new CameraSystem(), new RenderSystem());
+				new MovementSystem(), new ContactSystem(), new CameraSystem(), new RenderSystem());
 		isRunning = true;
 
 		primaryStage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {

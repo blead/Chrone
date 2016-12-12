@@ -19,9 +19,8 @@ public class MovementSystem extends EntitySystem {
 			try {
 				PositionComponent positionComponent = (PositionComponent) entity.getComponent(PositionComponent.class);
 				VelocityComponent velocityComponent = (VelocityComponent) entity.getComponent(VelocityComponent.class);
-				positionComponent.setPosition(
-						positionComponent.getPosition().add(velocityComponent.getVelocity().multiply(deltaTime)));
-				velocityComponent.setVelocity(Point2D.ZERO);
+				positionComponent.setPosition(positionComponent.getPosition().add(velocityComponent.getVelocity()));
+				velocityComponent.setVelocity(new Point2D(0, velocityComponent.getVelocity().getY()));
 			} catch (ComponentNotFoundException e) {
 				continue;
 			}

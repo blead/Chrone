@@ -8,11 +8,10 @@ import components.VelocityComponent;
 import core.Entity;
 import core.EntityManager;
 import core.EntitySystem;
-import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 import utils.Collision;
+import utils.CollisionBox;
 import utils.ComponentNotFoundException;
 import utils.Direction;
 
@@ -31,11 +30,12 @@ public class CollisionSystem extends EntitySystem {
 				CollisionComponent collisionComponent = (CollisionComponent) entity
 						.getComponent(CollisionComponent.class);
 				Point2D interpolatedVelocity = velocityComponent.getVelocity().multiply(deltaTime);
-				Rectangle collisionBox = getCollisionBox(positionComponent.getPosition(),
-						collisionComponent.getCollisionShape()),
-						broadPhaseArea = getBroadPhaseArea(collisionBox, interpolatedVelocity);
-				Collision collision = Collision.NONE;
+				CollisionBox collisionBox = new CollisionBox(positionComponent.getPosition(),
+						collisionComponent.getCollisionShape());
+				Collision collision;
 				do {
+					CollisionBox broadPhaseArea = collisionBox.getBroadPhaseArea(interpolatedVelocity);
+					collision = Collision.NONE;
 					for (Entity other : entities) {
 						// only test against static entities
 						if (other.contains(VelocityComponent.class))
@@ -45,13 +45,10 @@ public class CollisionSystem extends EntitySystem {
 									.getComponent(PositionComponent.class);
 							CollisionComponent otherCollisionComponent = (CollisionComponent) other
 									.getComponent(CollisionComponent.class);
-							Rectangle otherCollisionBox = getCollisionBox(otherPositionComponent.getPosition(),
+							CollisionBox otherCollisionBox = new CollisionBox(otherPositionComponent.getPosition(),
 									otherCollisionComponent.getCollisionShape());
 							// only test inside broadPhaseArea
-							if (doIntersect(broadPhaseArea, otherCollisionBox)) {
-								// TODO: efficiently resolve cases where
-								// entities are already colliding
-
+							if (broadPhaseArea.intersects(otherCollisionBox)) {
 								// find earliest collision
 								collision = Collision.min(collision,
 										getCollision(collisionBox, otherCollisionBox, interpolatedVelocity));
@@ -60,40 +57,16 @@ public class CollisionSystem extends EntitySystem {
 							continue;
 						}
 					}
-					// slide off with remaining velocity
-					Point2D resolvedPosition = getResolvedPosition(positionComponent.getPosition(),
-							interpolatedVelocity, collision),
-							slidingVelocity = getSlidingVelocity(interpolatedVelocity, collision);
-					positionComponent.setPosition(resolvedPosition);
-					velocityComponent.setVelocity(slidingVelocity);
+					// adjust velocity to the collisions
+					Point2D resolvedVelocity = getResolvedVelocity(interpolatedVelocity, collision);
+					velocityComponent.setVelocity(resolvedVelocity);
 					// repeat until there is no collision
-					interpolatedVelocity = slidingVelocity;
-					collisionBox = getCollisionBox(resolvedPosition, collisionBox);
-					collision = Collision.NONE;
+					interpolatedVelocity = resolvedVelocity;
 				} while (collision.getTime() < 1);
 			} catch (ComponentNotFoundException e) {
 				continue;
 			}
 		}
-	}
-
-	private Rectangle getCollisionBox(Point2D position, Shape collisionShape) {
-		Bounds collisionBounds = collisionShape.getBoundsInParent();
-		return new Rectangle(position.getX(), position.getY(), collisionBounds.getWidth(), collisionBounds.getHeight());
-	}
-
-	private Rectangle getBroadPhaseArea(Rectangle collisionBox, Point2D velocity) {
-		Rectangle broadPhaseArea = new Rectangle();
-		broadPhaseArea.setX(velocity.getX() > 0 ? collisionBox.getX() : collisionBox.getX() + velocity.getX());
-		broadPhaseArea.setY(velocity.getY() > 0 ? collisionBox.getY() : collisionBox.getY() + velocity.getY());
-		broadPhaseArea.setWidth(collisionBox.getWidth() + Math.abs(velocity.getX()));
-		broadPhaseArea.setHeight(collisionBox.getHeight() + Math.abs(velocity.getY()));
-		return broadPhaseArea;
-	}
-
-	private boolean doIntersect(Rectangle a, Rectangle b) {
-		return a.getX() < b.getX() + b.getWidth() && a.getX() + a.getWidth() > b.getX()
-				&& a.getY() < b.getY() + b.getHeight() && a.getY() + a.getHeight() > b.getY();
 	}
 
 	private Collision getCollision(Rectangle collisionBox, Rectangle otherCollisionBox, Point2D velocity) {
@@ -109,27 +82,24 @@ public class CollisionSystem extends EntitySystem {
 		Direction direction;
 		if (times[0].getX() > times[0].getY()) {
 			if (distances[0].getX() != 0)
-				direction = Direction.fromPoint2D(new Point2D(-distances[0].getX(), 0));
+				direction = Direction.fromPoint2D(new Point2D(distances[0].getX(), 0));
 			else
 				direction = Direction.RIGHT;
 		} else {
 			if (distances[0].getY() != 0)
-				direction = Direction.fromPoint2D(new Point2D(0, -distances[0].getY()));
+				direction = Direction.fromPoint2D(new Point2D(0, distances[0].getY()));
 			else
 				direction = Direction.DOWN;
 		}
 		return new Collision(direction, entryTime);
 	}
 
-	private Point2D getResolvedPosition(Point2D position, Point2D velocity, Collision collision) {
-		return position.add(velocity.multiply(collision.getTime()));
-	}
-
-	private Point2D getSlidingVelocity(Point2D velocity, Collision collision) {
-		double slidingVelocity = velocity.dotProduct(collision.getDirection().getDy(), collision.getDirection().getDx())
-				* (1 - collision.getTime());
-		return new Point2D(slidingVelocity * collision.getDirection().getDy(),
-				slidingVelocity * collision.getDirection().getDx());
+	private Point2D getResolvedVelocity(Point2D velocity, Collision collision) {
+		double resolvedVelocityX = collision.getDirection().getDx() == 0 ? velocity.getX()
+				: velocity.getX() * collision.getTime();
+		double resolvedVelocityY = collision.getDirection().getDy() == 0 ? velocity.getY()
+				: velocity.getY() * collision.getTime();
+		return new Point2D(resolvedVelocityX, resolvedVelocityY);
 	}
 
 	private Point2D[] getDistances(Rectangle a, Rectangle b, Point2D velocity) {

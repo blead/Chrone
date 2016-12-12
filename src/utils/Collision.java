@@ -1,7 +1,7 @@
 package utils;
 
 public class Collision {
-	public static final Collision NONE = new Collision(Direction.ALL, 1), ALL = new Collision(Direction.NONE, 0),
+	public static final Collision NONE = new Collision(Direction.NONE, 1), ALL = new Collision(Direction.ALL, 0),
 			CORNER = new Collision(Direction.DIAGONAL, 0);
 	private Direction direction;
 	private double time;

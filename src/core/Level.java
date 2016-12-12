@@ -6,7 +6,7 @@ import javafx.geometry.Point2D;
 
 public class Level {
 	public static final double TILE_SIZE = 60;
-	public static final Point2D DEFAULT_GRAVITY = new Point2D(0, 6);
+	public static final Point2D DEFAULT_GRAVITY = new Point2D(0, 2);
 	private final String[] data;
 	private final double width, height;
 	private Point2D gravity;

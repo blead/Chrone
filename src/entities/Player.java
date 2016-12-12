@@ -14,6 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import utils.JumpIntent;
 import utils.MoveIntent;
 import utils.RenderableRectangle;
 
@@ -22,7 +23,7 @@ public class Player extends Entity {
 	public static final double HEIGHT = Level.TILE_SIZE / 2;
 	public static final Paint COLOR = Color.BLUE;
 	public static final double ACCELERATION_X = Level.TILE_SIZE / 10;
-	public static final double ACCELERATION_Y = Level.TILE_SIZE / 5;
+	public static final double ACCELERATION_Y = Level.TILE_SIZE / 2;
 	public static final Point2D MAX_VELOCITY = new Point2D(Level.TILE_SIZE, Double.POSITIVE_INFINITY);
 
 	public Player() {
@@ -41,7 +42,7 @@ public class Player extends Entity {
 		inputComponent.setPressedIntent(KeyCode.LEFT,
 				new MoveIntent(new Point2D(-Player.ACCELERATION_X, 0), Player.MAX_VELOCITY));
 		inputComponent.setPressedIntent(KeyCode.UP,
-				new MoveIntent(new Point2D(0, -Player.ACCELERATION_Y), Player.MAX_VELOCITY));
+				new JumpIntent(new Point2D(0, -Player.ACCELERATION_Y), Player.MAX_VELOCITY));
 		add(new RenderComponent(new RenderableRectangle(Player.WIDTH, Player.HEIGHT), Player.COLOR),
 				new PositionComponent(positionX, positionY), new VelocityComponent(velocityX, velocityY),
 				new GravityComponent(), new CollisionComponent(new Rectangle(Player.WIDTH, Player.HEIGHT)),

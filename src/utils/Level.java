@@ -7,21 +7,37 @@ import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 
 public class Level {
-	public static final double TILE_SIZE = 60;
-	public static final Point2D DEFAULT_GRAVITY = new Point2D(0, 2);
-	public static final Image MENU_BACKGROUND = new Image(ClassLoader.getSystemResource("menu.png").toString());
-	public static final Image DEFAULT_BACKGROUND = new Image(ClassLoader.getSystemResource("bg1.jpg").toString());
+	public static final double TILE_SIZE;
+	public static final Point2D DEFAULT_GRAVITY;
+	public static final Image MENU_BACKGROUND;
+	public static final Image DEFAULT_BACKGROUND;
+	public static final Level MENU;
 	private final String[] data;
+	private final String[] messages;
 	private double width, height;
 	private double gravityX, gravityY;
 	private String background;
 
-	public Level(String[] data) {
-		this(data, Level.DEFAULT_GRAVITY, null);
+	static {
+		TILE_SIZE = 60;
+		DEFAULT_GRAVITY = new Point2D(0, 2);
+		MENU_BACKGROUND = new Image(ClassLoader.getSystemResource("menu.png").toString());
+		DEFAULT_BACKGROUND = new Image(ClassLoader.getSystemResource("bg1.jpg").toString());
+		MENU = new Level(new String[] { "000000000000000000000000000", "000000000000000000000000000",
+				"000000000000000000000000000", "000000000000000000000000000", "000000000000000000000000000",
+				"000000000000000000000000000", "000000000000000000000000000", "@00000000000000000000000000",
+				"000000000000000000000000000", "#00000000000000000000000000", "000000000000000000000000000",
+				"000000000000000000000000000", "000000000000000000000000000", "000000000000000000000000000",
+				"000000000000000000000000000" }, new String[] {}, Point2D.ZERO, "_menu");
 	}
 
-	public Level(String[] data, Point2D gravity, String background) {
+	public Level(String[] data) {
+		this(data, new String[] {}, Level.DEFAULT_GRAVITY, null);
+	}
+
+	public Level(String[] data, String[] messages, Point2D gravity, String background) {
 		this.data = data;
+		this.messages = messages;
 		width = data[0].length() * Level.TILE_SIZE;
 		height = data.length * Level.TILE_SIZE;
 		gravityX = gravity.getX();
@@ -33,7 +49,9 @@ public class Level {
 		Gson gson = new Gson();
 		Level level = gson.fromJson(json, Level.class);
 		if (level.getData() == null)
-			throw new JsonSyntaxException("data field missing");
+			throw new JsonSyntaxException("data field is missing");
+		if (level.getMessages() == null)
+			throw new JsonSyntaxException("messages field is missing");
 		if (level.getWidth() == 0)
 			level.setWidth(level.getData()[0].length() * Level.TILE_SIZE);
 		if (level.getHeight() == 0)
@@ -48,6 +66,10 @@ public class Level {
 
 	public String[] getData() {
 		return data;
+	}
+
+	public String[] getMessages() {
+		return messages;
 	}
 
 	public double getWidth() {

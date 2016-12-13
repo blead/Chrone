@@ -43,7 +43,7 @@ public class RenderableText implements Renderable {
 	@Override
 	public void render(GraphicsContext gc, double x, double y) {
 		gc.setFont(font);
-		gc.fillText(text, x, y + height);
+		gc.fillText(text, x, y);
 	}
 
 }

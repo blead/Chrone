@@ -11,7 +11,7 @@ import components.RenderComponent;
 import components.VelocityComponent;
 import intents.JumpIntent;
 import intents.MoveIntent;
-import intents.createAnchorIntent;
+import intents.CreateAnchorIntent;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
@@ -45,7 +45,7 @@ public class Player extends Entity {
 				new MoveIntent(new Point2D(-Player.ACCELERATION_X, 0), Player.MAX_VELOCITY));
 		inputComponent.setPressedIntent(KeyCode.UP,
 				new JumpIntent(new Point2D(0, -Player.ACCELERATION_Y), Player.MAX_VELOCITY));
-		inputComponent.setTriggeredIntent(KeyCode.A, new createAnchorIntent());
+		inputComponent.setTriggeredIntent(KeyCode.A, new CreateAnchorIntent());
 		add(new RenderComponent(new RenderableRectangle(Player.WIDTH, Player.HEIGHT), Player.COLOR),
 				new PositionComponent(positionX, positionY), new VelocityComponent(velocityX, velocityY),
 				new GravityComponent(), new CollisionComponent(new Rectangle(Player.WIDTH, Player.HEIGHT)),

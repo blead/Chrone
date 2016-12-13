@@ -23,7 +23,14 @@ public class ContactComponent extends Component {
 	}
 
 	public void setContact(Direction direction) {
-		contacts.add(direction);
+		setContact(direction, true);
+	}
+
+	public void setContact(Direction direction, boolean isContact) {
+		if (isContact)
+			contacts.add(direction);
+		else
+			contacts.remove(direction);
 	}
 
 	public void clearContacts() {

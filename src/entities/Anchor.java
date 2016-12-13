@@ -6,8 +6,8 @@ import components.InputRecorderComponent;
 import components.PositionComponent;
 import components.RenderComponent;
 import core.ChroneManager;
-import intents.createDynamicChroneIntent;
-import intents.createStaticChroneIntent;
+import intents.CreateDynamicChroneIntent;
+import intents.CreateStaticChroneIntent;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
@@ -32,8 +32,8 @@ public class Anchor extends Entity {
 
 	public Anchor(double positionX, double positionY) {
 		InputComponent inputComponent = new InputComponent();
-		inputComponent.setTriggeredIntent(KeyCode.S, new createStaticChroneIntent());
-		inputComponent.setTriggeredIntent(KeyCode.D, new createDynamicChroneIntent());
+		inputComponent.setTriggeredIntent(KeyCode.S, new CreateStaticChroneIntent());
+		inputComponent.setTriggeredIntent(KeyCode.D, new CreateDynamicChroneIntent());
 		add(new RenderComponent(new RenderableDiamond(Anchor.WIDTH, Anchor.HEIGHT), Anchor.COLOR,
 				(Player.WIDTH - Anchor.WIDTH) / 2, (Player.HEIGHT - Anchor.HEIGHT) / 2, Anchor.ALPHA),
 				new PositionComponent(positionX, positionY), new CameraComponent(1),

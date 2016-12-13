@@ -16,7 +16,7 @@ public class ChroneManager {
 	public static final int MAX_DYNAMIC_CHRONE = 1;
 	public static final int STATIC_CHRONE_DURATION = 1;
 	public static final int DYNAMIC_CHRONE_DURATION = 180;
-	private static ChroneManager instance = null;
+	private static ChroneManager instance = new ChroneManager();
 	private Queue<Anchor> anchors;
 	private Queue<StaticChrone> staticChrones;
 	private Queue<DynamicChrone> dynamicChrones;
@@ -28,8 +28,6 @@ public class ChroneManager {
 	}
 
 	public static ChroneManager getInstance() {
-		if (instance == null)
-			instance = new ChroneManager();
 		return instance;
 	}
 
@@ -41,6 +39,8 @@ public class ChroneManager {
 		if (anchors.size() >= ChroneManager.MAX_ANCHOR)
 			removeAnchor();
 		addAnchor(new Anchor(position));
+		AudioManager.getInstance().uniquePlay(AudioManager.ANCHOR);
+		AudioManager.getInstance().remove(AudioManager.ANCHOR);
 	}
 
 	public void createStaticChrone(Point2D position) {
@@ -48,6 +48,8 @@ public class ChroneManager {
 		if (staticChrones.size() >= ChroneManager.MAX_STATIC_CHRONE)
 			removeStaticChrone();
 		addStaticChrone(new StaticChrone(position));
+		AudioManager.getInstance().uniquePlay(AudioManager.CHRONE_CREATE);
+		AudioManager.getInstance().remove(AudioManager.CHRONE_CREATE);
 	}
 
 	public void createDynamicChrone(Point2D position, Queue<Set<KeyCode>> pressedRecord,
@@ -56,6 +58,8 @@ public class ChroneManager {
 		if (dynamicChrones.size() >= ChroneManager.MAX_DYNAMIC_CHRONE)
 			removeDynamicChrone();
 		addDynamicChrone(new DynamicChrone(position, pressedRecord, triggeredRecord));
+		AudioManager.getInstance().uniquePlay(AudioManager.CHRONE_CREATE);
+		AudioManager.getInstance().remove(AudioManager.CHRONE_CREATE);
 	}
 
 	private void addAnchor(Anchor anchor) {

@@ -9,7 +9,7 @@ import intents.Intent;
 import javafx.scene.input.KeyCode;
 
 public class InputManager {
-	private static InputManager instance = null;
+	private static InputManager instance = new InputManager();
 	private Set<KeyCode> pressed, triggered;
 	private Map<KeyCode, Intent> pressedIntents, triggeredIntents;
 
@@ -21,8 +21,6 @@ public class InputManager {
 	}
 
 	public static InputManager getInstance() {
-		if (instance == null)
-			instance = new InputManager();
 		return instance;
 	}
 

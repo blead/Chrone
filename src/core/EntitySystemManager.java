@@ -6,7 +6,7 @@ import java.util.TreeSet;
 import systems.EntitySystem;
 
 public class EntitySystemManager {
-	private static EntitySystemManager instance = null;
+	private static EntitySystemManager instance = new EntitySystemManager();
 	private SortedSet<EntitySystem> systems;
 
 	private EntitySystemManager() {
@@ -14,8 +14,6 @@ public class EntitySystemManager {
 	}
 
 	public static EntitySystemManager getInstance() {
-		if (instance == null)
-			instance = new EntitySystemManager();
 		return instance;
 	}
 

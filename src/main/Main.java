@@ -5,9 +5,10 @@ import core.InputManager;
 import core.LevelManager;
 import intents.OpenLevelIntent;
 import intents.RestartIntent;
+import intents.ReturnToMenuIntent;
+import intents.ToggleHelpIntent;
 import javafx.application.Application;
 import javafx.event.EventHandler;
-import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
@@ -100,10 +101,12 @@ public class Main extends Application {
 		primaryStage.setResizable(Main.IS_RESIZABLE);
 		primaryStage.setScene(new Scene(applicationRoot));
 		primaryStage.show();
-		LevelManager.getInstance().setLevel(new Level(LevelManager.LEVEL_MENU, Point2D.ZERO, "_menu"));
+		LevelManager.getInstance().setLevel(Level.MENU);
 		LevelManager.getInstance().load();
 		InputManager.getInstance().setTriggeredIntent(KeyCode.R, new RestartIntent());
 		InputManager.getInstance().setTriggeredIntent(KeyCode.O, new OpenLevelIntent());
+		InputManager.getInstance().setTriggeredIntent(KeyCode.H, new ToggleHelpIntent());
+		InputManager.getInstance().setTriggeredIntent(KeyCode.ESCAPE, new ReturnToMenuIntent());
 		EntitySystemManager.getInstance().add(new InputRecorderSystem(), new InputSystem(), new DelayedInputSystem(),
 				new GravitySystem(), new CollisionSystem(), new MovementSystem(), new ContactSystem(),
 				new DoorSwitchSystem(), new MessageSystem(), new ExpirationSystem(), new CameraSystem(),
@@ -127,17 +130,20 @@ public class Main extends Application {
 			@Override
 			public void run() {
 				final int FPS = 60;
-				final long timePerFrame = 1000000000 / FPS;
+				final long TIME_PER_FRAME = 1000000000 / FPS;
+				final double MAXIMUM_DELTA_TIME = 1;
 				long lastUpdateTime = System.nanoTime();
 				while (Main.getInstance().isRunning()) {
 					long now = System.nanoTime();
-					double deltaTime = (now - lastUpdateTime) / timePerFrame;
+					double deltaTime = (now - lastUpdateTime) / TIME_PER_FRAME;
 					// deltaTime in frame unit
 					if (deltaTime >= 1) {
+						if (deltaTime > MAXIMUM_DELTA_TIME)
+							deltaTime = MAXIMUM_DELTA_TIME;
 						EntitySystemManager.getInstance().update(deltaTime);
 						lastUpdateTime = now;
 					}
-					long timeUntilNextUpdate = (lastUpdateTime + timePerFrame - System.nanoTime()) / 1000000;
+					long timeUntilNextUpdate = (lastUpdateTime + TIME_PER_FRAME - System.nanoTime()) / 1000000;
 					if (timeUntilNextUpdate > 0) {
 						try {
 							Thread.sleep(timeUntilNextUpdate);

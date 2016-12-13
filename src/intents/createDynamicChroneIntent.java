@@ -6,7 +6,7 @@ import core.ChroneManager;
 import entities.Entity;
 import utils.ComponentNotFoundException;
 
-public class createDynamicChroneIntent implements Intent {
+public class CreateDynamicChroneIntent implements Intent {
 	@Override
 	public void handle(Entity entity) {
 		try {

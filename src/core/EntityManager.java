@@ -8,7 +8,7 @@ import java.util.List;
 import entities.Entity;
 
 public class EntityManager {
-	private static EntityManager instance = null;
+	private static EntityManager instance = new EntityManager();
 	private List<Entity> entities;
 
 	private EntityManager() {
@@ -16,8 +16,6 @@ public class EntityManager {
 	}
 
 	public static EntityManager getInstance() {
-		if (instance == null)
-			instance = new EntityManager();
 		return instance;
 	}
 

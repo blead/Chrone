@@ -1,13 +1,13 @@
 package intents;
 
 import core.LevelManager;
-import core.ToastManager;
 import entities.Entity;
+import utils.Level;
 
-public class RestartIntent implements Intent {
+public class ReturnToMenuIntent implements Intent {
 	@Override
 	public void handle(Entity entity) {
-		ToastManager.getInstance().hide();
+		LevelManager.getInstance().setLevel(Level.MENU);
 		LevelManager.getInstance().load();
 	}
 }

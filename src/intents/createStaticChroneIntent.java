@@ -5,7 +5,7 @@ import core.ChroneManager;
 import entities.Entity;
 import utils.ComponentNotFoundException;
 
-public class createStaticChroneIntent implements Intent {
+public class CreateStaticChroneIntent implements Intent {
 	@Override
 	public void handle(Entity entity) {
 		try {

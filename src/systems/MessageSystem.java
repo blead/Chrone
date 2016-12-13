@@ -6,6 +6,7 @@ import components.ContactComponent;
 import components.GoalComponent;
 import components.MessageComponent;
 import components.RenderComponent;
+import core.AudioManager;
 import core.EntityManager;
 import core.ToastManager;
 import entities.Entity;
@@ -31,18 +32,26 @@ public class MessageSystem extends EntitySystem {
 				if (contactComponent.isContact()) {
 					if (!messageComponent.isActive()) {
 						messageComponent.setActive(true);
-						renderableBlock.setSecondaryColor(entity.contains(GoalComponent.class) ? GoalBlock.ACTIVE_COLOR
-								: InfoBlock.COLOR_DISABLED);
+						renderableBlock.setSecondaryColor(
+								entity.contains(GoalComponent.class) ? GoalBlock.ACTIVE_COLOR : InfoBlock.COLOR);
 						ToastManager.getInstance().show(messageComponent.getMessage());
+						if (entity instanceof InfoBlock)
+							AudioManager.getInstance().uniquePlay(AudioManager.INFO_BLOCK);
+						else if (entity instanceof GoalBlock)
+							AudioManager.getInstance().uniquePlay(AudioManager.GOAL_BLOCK);
 					}
 				} else {
 					if (messageComponent.isActive()) {
 						if (!messageComponent.isSingle()) {
 							messageComponent.setActive(false);
 							renderableBlock.setSecondaryColor(
-									entity.contains(GoalComponent.class) ? GoalBlock.COLOR : InfoBlock.COLOR);
+									entity.contains(GoalComponent.class) ? GoalBlock.COLOR : InfoBlock.COLOR_DISABLED);
 						}
 						ToastManager.getInstance().hide(messageComponent.getMessage());
+						if (entity instanceof InfoBlock)
+							AudioManager.getInstance().remove(AudioManager.INFO_BLOCK);
+						else if (entity instanceof GoalBlock)
+							AudioManager.getInstance().remove(AudioManager.GOAL_BLOCK);
 					}
 				}
 			} catch (ComponentNotFoundException e) {

@@ -10,6 +10,7 @@ import components.DoorComponent;
 import components.JumpableSurfaceComponent;
 import components.RenderComponent;
 import components.SwitchComponent;
+import core.AudioManager;
 import core.EntityManager;
 import entities.DoorBlock;
 import entities.Entity;
@@ -60,18 +61,26 @@ public class DoorSwitchSystem extends EntitySystem {
 				RenderableDoorBlock doorBlock = (RenderableDoorBlock) renderComponent.getShape();
 				if (codes.contains(doorComponent.getCode())) {
 					// open
-					doorComponent.setOpen(true);
-					entity.remove(CollisionComponent.class);
-					entity.remove(JumpableSurfaceComponent.class);
-					renderComponent.setAlpha(DoorBlock.ALPHA);
-					doorBlock.setOpen(true);
+					if (!doorComponent.isOpen()) {
+						doorComponent.setOpen(true);
+						entity.remove(CollisionComponent.class);
+						entity.remove(JumpableSurfaceComponent.class);
+						renderComponent.setAlpha(DoorBlock.ALPHA);
+						doorBlock.setOpen(true);
+						AudioManager.getInstance().remove(AudioManager.DOOR_CLOSE);
+						AudioManager.getInstance().uniquePlay(AudioManager.DOOR_OPEN);
+					}
 				} else {
 					// close
-					doorComponent.setOpen(false);
-					entity.add(new CollisionComponent(doorComponent.getCollisionShape()),
-							new JumpableSurfaceComponent());
-					renderComponent.setAlpha(1);
-					doorBlock.setOpen(false);
+					if (doorComponent.isOpen()) {
+						doorComponent.setOpen(false);
+						entity.add(new CollisionComponent(doorComponent.getCollisionShape()),
+								new JumpableSurfaceComponent());
+						renderComponent.setAlpha(1);
+						doorBlock.setOpen(false);
+						AudioManager.getInstance().remove(AudioManager.DOOR_OPEN);
+						AudioManager.getInstance().uniquePlay(AudioManager.DOOR_CLOSE);
+					}
 				}
 			} catch (ComponentNotFoundException e) {
 				continue;

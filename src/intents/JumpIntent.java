@@ -19,6 +19,7 @@ public class JumpIntent extends MoveIntent {
 			ContactComponent contactComponent = (ContactComponent) entity.getComponent(ContactComponent.class);
 			if (contactComponent.isContact(Direction.DOWN)) {
 				velocityComponent.setVelocity(getVelocity(velocityComponent.getVelocity(), acceleration, maxVelocity));
+				contactComponent.setContact(Direction.DOWN, false);
 			}
 		} catch (ComponentNotFoundException e) {
 			throw new IllegalArgumentException();

@@ -5,7 +5,7 @@ import core.ChroneManager;
 import entities.Entity;
 import utils.ComponentNotFoundException;
 
-public class createAnchorIntent implements Intent {
+public class CreateAnchorIntent implements Intent {
 	@Override
 	public void handle(Entity entity) {
 		try {

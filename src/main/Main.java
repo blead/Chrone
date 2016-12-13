@@ -20,6 +20,7 @@ import systems.ContactSystem;
 import systems.DelayedInputSystem;
 import systems.DoorSwitchSystem;
 import systems.ExpirationSystem;
+import systems.GoalSystem;
 import systems.GravitySystem;
 import systems.InputRecorderSystem;
 import systems.InputSystem;
@@ -99,7 +100,8 @@ public class Main extends Application {
 		InputManager.getInstance().setTriggeredIntent(KeyCode.O, new OpenLevelIntent());
 		EntitySystemManager.getInstance().add(new InputRecorderSystem(), new InputSystem(), new DelayedInputSystem(),
 				new GravitySystem(), new CollisionSystem(), new MovementSystem(), new ContactSystem(),
-				new DoorSwitchSystem(), new ExpirationSystem(), new CameraSystem(), new RenderSystem());
+				new DoorSwitchSystem(), new GoalSystem(), new ExpirationSystem(), new CameraSystem(),
+				new RenderSystem());
 		isRunning = true;
 		// set input handlers
 		primaryStage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {

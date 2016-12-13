@@ -2,6 +2,7 @@ package core;
 
 import entities.Block;
 import entities.DoorBlock;
+import entities.GoalBlock;
 import entities.Player;
 import entities.SwitchBlock;
 import entities.TextUserInterface;
@@ -78,6 +79,9 @@ public class LevelManager {
 					EntityManager.getInstance().add(new Block(Level.TILE_SIZE * j, Level.TILE_SIZE * i));
 				else if (code == '2')
 					EntityManager.getInstance().add(new Player(Level.TILE_SIZE * j, Level.TILE_SIZE * i, 0, 0));
+				else if (code == '3')
+					EntityManager.getInstance()
+							.add(new GoalBlock(Level.TILE_SIZE * j, Level.TILE_SIZE * i, GoalBlock.COLOR));
 				else if ('a' <= code && code <= 'z')
 					EntityManager.getInstance().add(new SwitchBlock(Level.TILE_SIZE * j, Level.TILE_SIZE * i,
 							Code.getCodeColor(Character.toUpperCase(code)), Character.toUpperCase(code)));

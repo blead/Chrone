@@ -21,6 +21,7 @@ import systems.ContactSystem;
 import systems.DelayedInputSystem;
 import systems.DoorSwitchSystem;
 import systems.ExpirationSystem;
+import systems.GarbageCollectionSystem;
 import systems.GravitySystem;
 import systems.InputRecorderSystem;
 import systems.InputSystem;
@@ -110,7 +111,7 @@ public class Main extends Application {
 		EntitySystemManager.getInstance().add(new InputRecorderSystem(), new InputSystem(), new DelayedInputSystem(),
 				new GravitySystem(), new CollisionSystem(), new MovementSystem(), new ContactSystem(),
 				new DoorSwitchSystem(), new MessageSystem(), new ExpirationSystem(), new CameraSystem(),
-				new RenderSystem());
+				new GarbageCollectionSystem(), new RenderSystem());
 		isRunning = true;
 		// set input handlers
 		primaryStage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {

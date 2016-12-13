@@ -3,7 +3,6 @@ package core;
 import java.util.HashSet;
 import java.util.Set;
 
-import javafx.application.Platform;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -39,12 +38,7 @@ public class AudioManager {
 	public void uniquePlay(AudioClip audioClip, double volume) {
 		if (!contains(audioClip)) {
 			add(audioClip);
-			Platform.runLater(new Runnable() {
-				@Override
-				public void run() {
-					audioClip.play(volume);
-				}
-			});
+			audioClip.play(volume);
 		}
 	}
 

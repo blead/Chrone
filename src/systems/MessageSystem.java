@@ -37,8 +37,10 @@ public class MessageSystem extends EntitySystem {
 						ToastManager.getInstance().show(messageComponent.getMessage());
 						if (entity instanceof InfoBlock)
 							AudioManager.getInstance().uniquePlay(AudioManager.INFO_BLOCK);
-						else if (entity instanceof GoalBlock)
+						else if (entity instanceof GoalBlock) {
+							AudioManager.getInstance().stopBgm();
 							AudioManager.getInstance().uniquePlay(AudioManager.GOAL_BLOCK);
+						}
 					}
 				} else {
 					if (messageComponent.isActive()) {

@@ -62,24 +62,24 @@ public class DoorSwitchSystem extends EntitySystem {
 				if (codes.contains(doorComponent.getCode())) {
 					// open
 					if (!doorComponent.isOpen()) {
+						AudioManager.getInstance().remove(AudioManager.DOOR_CLOSE);
+						AudioManager.getInstance().uniquePlay(AudioManager.DOOR_OPEN);
 						doorComponent.setOpen(true);
 						entity.remove(CollisionComponent.class);
 						entity.remove(JumpableSurfaceComponent.class);
 						renderComponent.setAlpha(DoorBlock.ALPHA);
 						doorBlock.setOpen(true);
-						AudioManager.getInstance().remove(AudioManager.DOOR_CLOSE);
-						AudioManager.getInstance().uniquePlay(AudioManager.DOOR_OPEN);
 					}
 				} else {
 					// close
 					if (doorComponent.isOpen()) {
+						AudioManager.getInstance().remove(AudioManager.DOOR_OPEN);
+						AudioManager.getInstance().uniquePlay(AudioManager.DOOR_CLOSE);
 						doorComponent.setOpen(false);
 						entity.add(new CollisionComponent(doorComponent.getCollisionShape()),
 								new JumpableSurfaceComponent());
 						renderComponent.setAlpha(1);
 						doorBlock.setOpen(false);
-						AudioManager.getInstance().remove(AudioManager.DOOR_OPEN);
-						AudioManager.getInstance().uniquePlay(AudioManager.DOOR_CLOSE);
 					}
 				}
 			} catch (ComponentNotFoundException e) {

@@ -19,11 +19,12 @@ public class ExpirationSystem extends EntitySystem {
 				ExpirationComponent expirationComponent = (ExpirationComponent) entity
 						.getComponent(ExpirationComponent.class);
 				expirationComponent.decreaseExpirationTime(deltaTime);
-				if (expirationComponent.getExpirationTime() <= 0)
+				if (expirationComponent.getExpirationTime() <= 0) {
 					EntityManager.getInstance().remove(entity);
-				if (entity instanceof DynamicChrone) {
-					AudioManager.getInstance().uniquePlay(AudioManager.CHRONE_REMOVE);
-					AudioManager.getInstance().remove(AudioManager.CHRONE_REMOVE);
+					if (entity instanceof DynamicChrone) {
+						AudioManager.getInstance().uniquePlay(AudioManager.CHRONE_REMOVE);
+						AudioManager.getInstance().remove(AudioManager.CHRONE_REMOVE);
+					}
 				}
 			} catch (ComponentNotFoundException e) {
 				continue;

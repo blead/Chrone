@@ -3,10 +3,15 @@ package core;
 import java.util.HashSet;
 import java.util.Set;
 
+import javafx.application.Platform;
 import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class AudioManager {
 	public static final double VOLUME = 0.5;
+	public static final Media LOST_SIGNAL = new Media(ClassLoader.getSystemResource("lost_signal.mp3").toString());
+	public static final Media DEAR_DIARY = new Media(ClassLoader.getSystemResource("dear_diary.mp3").toString());
 	public static final AudioClip DOOR_OPEN = new AudioClip(ClassLoader.getSystemResource("043.wav").toString());
 	public static final AudioClip DOOR_CLOSE = new AudioClip(ClassLoader.getSystemResource("019.wav").toString());
 	public static final AudioClip ANCHOR = new AudioClip(ClassLoader.getSystemResource("046.wav").toString());
@@ -17,6 +22,7 @@ public class AudioManager {
 
 	private static AudioManager instance = new AudioManager();
 	private Set<AudioClip> audioClips;
+	private MediaPlayer bgm;
 
 	private AudioManager() {
 		audioClips = new HashSet<>();
@@ -33,7 +39,12 @@ public class AudioManager {
 	public void uniquePlay(AudioClip audioClip, double volume) {
 		if (!contains(audioClip)) {
 			add(audioClip);
-			audioClip.play(volume);
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					audioClip.play(volume);
+				}
+			});
 		}
 	}
 
@@ -47,5 +58,17 @@ public class AudioManager {
 
 	public void remove(AudioClip audioClip) {
 		audioClips.remove(audioClip);
+	}
+
+	public void playBgm(Media media) {
+		stopBgm();
+		bgm = new MediaPlayer(media);
+		bgm.setCycleCount(MediaPlayer.INDEFINITE);
+		bgm.play();
+	}
+
+	public void stopBgm() {
+		if (bgm != null && bgm.getStatus() == MediaPlayer.Status.PLAYING)
+			bgm.stop();
 	}
 }

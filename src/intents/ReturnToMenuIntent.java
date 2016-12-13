@@ -7,7 +7,9 @@ import utils.Level;
 public class ReturnToMenuIntent implements Intent {
 	@Override
 	public void handle(Entity entity) {
-		LevelManager.getInstance().setLevel(Level.MENU);
-		LevelManager.getInstance().load();
+		if (!LevelManager.getInstance().getLevel().equals(Level.MENU)) {
+			LevelManager.getInstance().setLevel(Level.MENU);
+			LevelManager.getInstance().load();
+		}
 	}
 }

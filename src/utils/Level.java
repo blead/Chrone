@@ -17,6 +17,7 @@ public class Level {
 	private double width, height;
 	private double gravityX, gravityY;
 	private String background;
+	private String music;
 
 	static {
 		TILE_SIZE = 60;
@@ -28,14 +29,14 @@ public class Level {
 				"000000000000000000000000000", "000000000000000000000000000", "@00000000000000000000000000",
 				"000000000000000000000000000", "#00000000000000000000000000", "000000000000000000000000000",
 				"000000000000000000000000000", "000000000000000000000000000", "000000000000000000000000000",
-				"000000000000000000000000000" }, new String[] {}, Point2D.ZERO, "_menu");
+				"000000000000000000000000000" }, new String[] {}, Point2D.ZERO, "_menu", "_lost_signal");
 	}
 
 	public Level(String[] data) {
-		this(data, new String[] {}, Level.DEFAULT_GRAVITY, null);
+		this(data, new String[] {}, Level.DEFAULT_GRAVITY, null, null);
 	}
 
-	public Level(String[] data, String[] messages, Point2D gravity, String background) {
+	public Level(String[] data, String[] messages, Point2D gravity, String background, String music) {
 		this.data = data;
 		this.messages = messages;
 		width = data[0].length() * Level.TILE_SIZE;
@@ -43,6 +44,7 @@ public class Level {
 		gravityX = gravity.getX();
 		gravityY = gravity.getY();
 		this.background = background;
+		this.music = music;
 	}
 
 	public static Level fromJson(String json) throws JsonSyntaxException {
@@ -103,5 +105,13 @@ public class Level {
 
 	public void setBackground(String background) {
 		this.background = background;
+	}
+
+	public String getMusic() {
+		return music;
+	}
+
+	public void setMusic(String music) {
+		this.music = music;
 	}
 }

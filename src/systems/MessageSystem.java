@@ -34,14 +34,6 @@ public class MessageSystem extends EntitySystem {
 						renderableBlock.setSecondaryColor(entity.contains(GoalComponent.class) ? GoalBlock.ACTIVE_COLOR
 								: InfoBlock.COLOR_DISABLED);
 						ToastManager.getInstance().show(messageComponent.getMessage());
-						// Platform.runLater(new Runnable() {
-						// @Override
-						// public void run() {
-						// Alert alert = new Alert(AlertType.INFORMATION);
-						// alert.setContentText(messageComponent.getMessage());
-						// alert.showAndWait();
-						// }
-						// });
 					}
 				} else {
 					if (messageComponent.isActive()) {

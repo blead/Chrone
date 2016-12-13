@@ -35,6 +35,9 @@ public class Main extends Application {
 	public static final boolean IS_RESIZABLE = false;
 	public static final int WIDTH = 1600;
 	public static final int HEIGHT = 900;
+	public static final int FPS = 60;
+	public static final long TIME_PER_FRAME = 1000000000 / FPS;
+	public static final double MAXIMUM_DELTA_TIME = 1;
 	public static Main instance = null;
 	private Stage primaryStage;
 	private Pane applicationRoot;
@@ -90,8 +93,16 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		// initialize states
 		this.primaryStage = primaryStage;
+		isRunning = true;
+		initializeStage();
+		initializeGame();
+		setInputHandlers();
+		gameLoop = getGameLoop();
+		gameLoop.start();
+	}
+
+	private void initializeStage() {
 		background = new Canvas();
 		game = new Canvas();
 		toast = new Canvas(Main.WIDTH, Main.HEIGHT);
@@ -102,6 +113,9 @@ public class Main extends Application {
 		primaryStage.setResizable(Main.IS_RESIZABLE);
 		primaryStage.setScene(new Scene(applicationRoot));
 		primaryStage.show();
+	}
+
+	private void initializeGame() {
 		LevelManager.getInstance().setLevel(Level.MENU);
 		LevelManager.getInstance().load();
 		InputManager.getInstance().setTriggeredIntent(KeyCode.R, new RestartIntent());
@@ -112,8 +126,9 @@ public class Main extends Application {
 				new GravitySystem(), new CollisionSystem(), new MovementSystem(), new ContactSystem(),
 				new DoorSwitchSystem(), new MessageSystem(), new ExpirationSystem(), new CameraSystem(),
 				new GarbageCollectionSystem(), new RenderSystem());
-		isRunning = true;
-		// set input handlers
+	}
+
+	private void setInputHandlers() {
 		primaryStage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent keyEvent) {
@@ -126,25 +141,24 @@ public class Main extends Application {
 				InputManager.getInstance().setPressed(keyEvent.getCode(), false);
 			}
 		});
-		// game loop
-		gameLoop = new Thread(new Runnable() {
+	}
+
+	private Thread getGameLoop() {
+		return new Thread(new Runnable() {
 			@Override
 			public void run() {
-				final int FPS = 60;
-				final long TIME_PER_FRAME = 1000000000 / FPS;
-				final double MAXIMUM_DELTA_TIME = 1;
 				long lastUpdateTime = System.nanoTime();
 				while (Main.getInstance().isRunning()) {
 					long now = System.nanoTime();
-					double deltaTime = (now - lastUpdateTime) / TIME_PER_FRAME;
+					double deltaTime = (now - lastUpdateTime) / Main.TIME_PER_FRAME;
 					// deltaTime in frame unit
 					if (deltaTime >= 1) {
-						if (deltaTime > MAXIMUM_DELTA_TIME)
-							deltaTime = MAXIMUM_DELTA_TIME;
+						if (deltaTime > Main.MAXIMUM_DELTA_TIME)
+							deltaTime = Main.MAXIMUM_DELTA_TIME;
 						EntitySystemManager.getInstance().update(deltaTime);
 						lastUpdateTime = now;
 					}
-					long timeUntilNextUpdate = (lastUpdateTime + TIME_PER_FRAME - System.nanoTime()) / 1000000;
+					long timeUntilNextUpdate = (lastUpdateTime + Main.TIME_PER_FRAME - System.nanoTime()) / 1000000;
 					if (timeUntilNextUpdate > 0) {
 						try {
 							Thread.sleep(timeUntilNextUpdate);
@@ -155,7 +169,6 @@ public class Main extends Application {
 				}
 			}
 		});
-		gameLoop.start();
 	}
 
 	@Override

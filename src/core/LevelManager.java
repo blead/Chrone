@@ -34,25 +34,46 @@ public class LevelManager {
 
 	public void load() {
 		checkLevelData(level);
-		EntityManager.getInstance().clear();
-		AudioManager.getInstance().stopBgm();
+		loadLevelResources();
+		resetLevel();
+		AudioManager.getInstance().playBgm(music);
+		parseLevelData(level.getData(), level.getMessages());
+	}
+
+	private void checkLevelData(Level level) {
+		String[] data = level.getData();
+		int messageCount = 0;
+		for (int i = 0; i < data.length; i++)
+			for (int j = 0; j < data[i].length(); j++)
+				if (data[i].charAt(j) == '3')
+					messageCount++;
+		if (messageCount > level.getMessages().length)
+			throw new JsonSyntaxException("insufficient amount of messages");
+	}
+
+	private void loadLevelResources() {
 		try {
 			if (level.getBackground().equals("_menu"))
-				this.background = Level.MENU_BACKGROUND;
+				background = Level.MENU_BACKGROUND;
 			else
-				this.background = new Image(level.getBackground());
+				background = new Image(level.getBackground());
 		} catch (NullPointerException e) {
-			this.background = Level.DEFAULT_BACKGROUND;
+			background = Level.DEFAULT_BACKGROUND;
 		}
 		try {
 			if (level.getMusic().equals("_lost_signal"))
-				this.music = AudioManager.LOST_SIGNAL;
+				music = AudioManager.LOST_SIGNAL;
 			else
-				this.music = new Media(level.getMusic());
+				music = new Media(level.getMusic());
 		} catch (NullPointerException e) {
-			this.background = Level.DEFAULT_BACKGROUND;
-			this.music = AudioManager.DEAR_DIARY;
+			background = Level.DEFAULT_BACKGROUND;
+			music = AudioManager.DEAR_DIARY;
 		}
+	}
+
+	private void resetLevel() {
+		EntityManager.getInstance().clear();
+		AudioManager.getInstance().stopBgm();
 		Canvas background = Main.getInstance().getBackground(), game = Main.getInstance().getGame();
 		double backgroundWidth = Math.max(this.background.getWidth(), Main.WIDTH),
 				backgroundHeight = Math.max(this.background.getHeight(), Main.HEIGHT);
@@ -69,19 +90,6 @@ public class LevelManager {
 				game.setTranslateY(0);
 			}
 		});
-		AudioManager.getInstance().playBgm(this.music);
-		parseLevelData(level.getData(), level.getMessages());
-	}
-
-	private void checkLevelData(Level level) {
-		String[] data = level.getData();
-		int messageCount = 0;
-		for (int i = 0; i < data.length; i++)
-			for (int j = 0; j < data[i].length(); j++)
-				if (data[i].charAt(j) == '3')
-					messageCount++;
-		if (messageCount > level.getMessages().length)
-			throw new JsonSyntaxException("insufficient amount of messages");
 	}
 
 	private void parseLevelData(String[] data, String[] messages) {

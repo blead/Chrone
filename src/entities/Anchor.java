@@ -39,5 +39,4 @@ public class Anchor extends Entity {
 				new PositionComponent(positionX, positionY), new CameraComponent(1),
 				new InputRecorderComponent(ChroneManager.getMaxDuration()), inputComponent);
 	}
-
 }

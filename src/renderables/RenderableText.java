@@ -45,5 +45,4 @@ public class RenderableText implements Renderable {
 		gc.setFont(font);
 		gc.fillText(text, x, y);
 	}
-
 }

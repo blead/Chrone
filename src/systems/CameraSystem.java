@@ -64,6 +64,7 @@ public class CameraSystem extends EntitySystem {
 		if (anchorPositions.size() > 0) {
 			Point2D minPosition = new Point2D(Double.MAX_VALUE, Double.MAX_VALUE),
 					maxPosition = new Point2D(Double.MIN_VALUE, Double.MIN_VALUE);
+			// get as many anchorPositions as possible inside viewport
 			while (!anchorPositions.isEmpty()) {
 				Point2D newPosition = anchorPositions.poll().getPoint2D(),
 						newMinPosition = new Point2D(Math.min(minPosition.getX(), newPosition.getX()),
@@ -80,6 +81,7 @@ public class CameraSystem extends EntitySystem {
 					break;
 				}
 			}
+			// adjust viewport position: prevent from going out of bounds
 			if (minPosition.getX() != Double.MAX_VALUE && minPosition.getY() != Double.MAX_VALUE
 					&& maxPosition.getX() != Double.MIN_VALUE && maxPosition.getY() != Double.MIN_VALUE) {
 				Point2D offset = new Point2D((viewportWidth - (maxPosition.getX() - minPosition.getX())) / 2,

@@ -25,5 +25,4 @@ public class GravitySystem extends EntitySystem {
 			}
 		}
 	}
-
 }

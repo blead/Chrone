@@ -27,6 +27,11 @@ public class DoorSwitchSystem extends EntitySystem {
 	@Override
 	public void update(double deltaTime) {
 		List<Entity> entities = EntityManager.getInstance().getEntities();
+		Set<Character> codes = getCodes(entities);
+		setDoors(entities, codes);
+	}
+
+	private Set<Character> getCodes(List<Entity> entities) {
 		Set<Character> codes = new HashSet<>();
 		for (Entity entity : entities) {
 			try {
@@ -54,6 +59,10 @@ public class DoorSwitchSystem extends EntitySystem {
 				continue;
 			}
 		}
+		return codes;
+	}
+
+	private void setDoors(List<Entity> entities, Set<Character> codes) {
 		for (Entity entity : entities) {
 			try {
 				DoorComponent doorComponent = (DoorComponent) entity.getComponent(DoorComponent.class);

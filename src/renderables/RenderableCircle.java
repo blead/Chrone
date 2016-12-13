@@ -27,5 +27,4 @@ public class RenderableCircle implements Renderable {
 	public void render(GraphicsContext gc, double x, double y) {
 		gc.fillOval(x, y, radius * 2, radius * 2);
 	}
-
 }

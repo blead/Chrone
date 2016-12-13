@@ -42,5 +42,4 @@ public class EntitySystemManager {
 			system.update(deltaTime);
 		}
 	}
-
 }

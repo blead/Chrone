@@ -15,7 +15,12 @@ public class InputSystem extends EntitySystem {
 
 	@Override
 	public void update(double deltaTime) {
-		// global Intents
+		handleGlobalIntents();
+		handleEntityIntents();
+		InputManager.getInstance().clearTriggered();
+	}
+
+	private void handleGlobalIntents() {
 		for (KeyCode keyCode : InputManager.getInstance().getPressed()) {
 			Intent intent = InputManager.getInstance().getPressedIntent(keyCode);
 			if (intent != null)
@@ -26,7 +31,9 @@ public class InputSystem extends EntitySystem {
 			if (intent != null)
 				intent.handle(null);
 		}
-		// entity-modifying intents
+	}
+
+	private void handleEntityIntents() {
 		for (Entity entity : EntityManager.getInstance().getEntities()) {
 			try {
 				InputComponent inputComponent = (InputComponent) entity.getComponent(InputComponent.class);
@@ -44,6 +51,5 @@ public class InputSystem extends EntitySystem {
 				continue;
 			}
 		}
-		InputManager.getInstance().clearTriggered();
 	}
 }

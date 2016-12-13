@@ -9,7 +9,6 @@ import components.JumpableSurfaceComponent;
 import components.PositionComponent;
 import components.RenderComponent;
 import components.VelocityComponent;
-import core.Level;
 import intents.JumpIntent;
 import intents.MoveIntent;
 import intents.createAnchorIntent;
@@ -19,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import renderables.RenderableRectangle;
+import utils.Level;
 
 public class Player extends Entity {
 	public static final double WIDTH = Level.TILE_SIZE / 2;

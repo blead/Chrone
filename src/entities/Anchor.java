@@ -6,7 +6,6 @@ import components.InputRecorderComponent;
 import components.PositionComponent;
 import components.RenderComponent;
 import core.ChroneManager;
-import core.Level;
 import intents.createDynamicChroneIntent;
 import intents.createStaticChroneIntent;
 import javafx.geometry.Point2D;
@@ -14,6 +13,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import renderables.RenderableDiamond;
+import utils.Level;
 
 public class Anchor extends Entity {
 	public static final double WIDTH = Level.TILE_SIZE / 3;

@@ -1,4 +1,4 @@
-package core;
+package utils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 public class Level {
 	public static final double TILE_SIZE = 60;
 	public static final Point2D DEFAULT_GRAVITY = new Point2D(0, 2);
+	public static final Image MENU_BACKGROUND = new Image(ClassLoader.getSystemResource("menu.png").toString());
 	public static final Image DEFAULT_BACKGROUND = new Image(ClassLoader.getSystemResource("bg1.jpg").toString());
 	private final String[] data;
 	private double width, height;

@@ -4,18 +4,22 @@ import entities.Block;
 import entities.DoorBlock;
 import entities.Player;
 import entities.SwitchBlock;
+import entities.TextUserInterface;
 import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import main.Main;
 import utils.Code;
+import utils.Level;
 
 public class LevelManager {
-	public static final String[] LEVEL_ONE = new String[] { "000000000000000000000000000000",
-			"000000000000000000000000000000", "000000000000000000000000000000", "000020000000000000000000000000",
-			"000000000000000000000000000000", "000000000000000000000000000000", "000000000000000000000000000000",
-			"0001B1000000000000000000000000", "00000000a110000000000000000000", "00000000000001A100000000000000",
-			"0000011b0000000000011100011000", "111a11110011110001111100111111" };
+	public static final String[] LEVEL_MENU = new String[] { "000000000000000000000000000",
+			"000000000000000000000000000", "000000000000000000000000000", "000000000000000000000000000",
+			"000000000000000000000000000", "000000000000000000000000000", "000000000000000000000000000",
+			"@00000000000000000000000000", "000000000000000000000000000", "000000000000000000000000000",
+			"000000000000000000000000000", "000000000000000000000000000", "000000000000000000000000000",
+			"000000000000000000000000000", "000000000000000000000000000" };
 	private static LevelManager instance = null;
 	private Level level;
 	private Image background;
@@ -34,13 +38,15 @@ public class LevelManager {
 		if (level == null)
 			throw new NullPointerException();
 		EntityManager.getInstance().clear();
-		String[] data = level.getData();
-		Canvas background = Main.getInstance().getBackground(), game = Main.getInstance().getGame();
 		try {
-			this.background = new Image(level.getBackground());
+			if (level.getBackground().equals("_menu"))
+				this.background = Level.MENU_BACKGROUND;
+			else
+				this.background = new Image(level.getBackground());
 		} catch (NullPointerException e) {
 			this.background = Level.DEFAULT_BACKGROUND;
 		}
+		Canvas background = Main.getInstance().getBackground(), game = Main.getInstance().getGame();
 		double backgroundWidth = Math.max(this.background.getWidth(), Main.WIDTH),
 				backgroundHeight = Math.max(this.background.getHeight(), Main.HEIGHT);
 		Platform.runLater(new Runnable() {
@@ -56,10 +62,19 @@ public class LevelManager {
 				game.setTranslateY(0);
 			}
 		});
+		parseLevelData(level.getData());
+	}
+
+	private void parseLevelData(String[] data) {
 		for (int i = 0; i < data.length; i++) {
 			for (int j = 0; j < data[i].length(); j++) {
 				char code = data[i].charAt(j);
-				if (code == '1')
+				// menu
+				if (code == '@')
+					EntityManager.getInstance().add(new TextUserInterface("Press O to open a level",
+							Font.font(Level.TILE_SIZE / 2), Level.TILE_SIZE * j, Level.TILE_SIZE * i));
+				// level
+				else if (code == '1')
 					EntityManager.getInstance().add(new Block(Level.TILE_SIZE * j, Level.TILE_SIZE * i));
 				else if (code == '2')
 					EntityManager.getInstance().add(new Player(Level.TILE_SIZE * j, Level.TILE_SIZE * i, 0, 0));

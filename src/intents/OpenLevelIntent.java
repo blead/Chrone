@@ -6,7 +6,6 @@ import java.nio.file.Files;
 
 import com.google.gson.JsonSyntaxException;
 
-import core.Level;
 import core.LevelManager;
 import entities.Entity;
 import javafx.application.Platform;
@@ -14,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 import main.Main;
+import utils.Level;
 
 public class OpenLevelIntent implements Intent {
 	private static final FileChooser fileChooser;

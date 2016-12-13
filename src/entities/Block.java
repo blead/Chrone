@@ -4,12 +4,12 @@ import components.CollisionComponent;
 import components.JumpableSurfaceComponent;
 import components.PositionComponent;
 import components.RenderComponent;
-import core.Level;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import renderables.RenderableRectangle;
+import utils.Level;
 
 public class Block extends Entity {
 	public static final double WIDTH = Level.TILE_SIZE;

@@ -4,6 +4,7 @@ import components.CollisionComponent;
 import components.ContactComponent;
 import components.GoalComponent;
 import components.JumpableSurfaceComponent;
+import components.MessageComponent;
 import components.PositionComponent;
 import components.RenderComponent;
 import components.VelocityComponent;
@@ -24,6 +25,7 @@ public class GoalBlock extends Entity {
 		add(new RenderComponent(new RenderableGoalBlock(Block.WIDTH, Block.HEIGHT, goalColor), Block.COLOR),
 				new PositionComponent(positionX, positionY),
 				new CollisionComponent(new Rectangle(Block.WIDTH, Block.HEIGHT)),
-				new ContactComponent(VelocityComponent.class), new JumpableSurfaceComponent(), new GoalComponent());
+				new ContactComponent(VelocityComponent.class), new GoalComponent(),
+				new MessageComponent("CONGRATSalksdjflaksdjklajfs", true), new JumpableSurfaceComponent());
 	}
 }

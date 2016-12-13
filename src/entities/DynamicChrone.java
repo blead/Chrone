@@ -6,6 +6,7 @@ import java.util.Set;
 import components.ContactComponent;
 import components.DelayedInputComponent;
 import components.ExpirationComponent;
+import components.GravityComponent;
 import components.InputRecordComponent;
 import components.JumpableSurfaceComponent;
 import components.RenderComponent;
@@ -40,7 +41,7 @@ public class DynamicChrone extends Chrone {
 		delayedInputComponent.setPressedIntent(KeyCode.UP,
 				new JumpIntent(new Point2D(0, -Player.ACCELERATION_Y), Player.MAX_VELOCITY));
 		add(new RenderComponent(new RenderableRectangle(Player.WIDTH, Player.HEIGHT), DynamicChrone.COLOR,
-				Chrone.ALPHA), new ContactComponent(JumpableSurfaceComponent.class),
+				Chrone.ALPHA), new GravityComponent(), new ContactComponent(JumpableSurfaceComponent.class),
 				new ExpirationComponent(ChroneManager.DYNAMIC_CHRONE_DURATION),
 				new InputRecordComponent(pressedRecord, triggeredRecord, ChroneManager.DYNAMIC_CHRONE_DURATION),
 				delayedInputComponent);

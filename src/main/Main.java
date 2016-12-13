@@ -20,10 +20,10 @@ import systems.ContactSystem;
 import systems.DelayedInputSystem;
 import systems.DoorSwitchSystem;
 import systems.ExpirationSystem;
-import systems.GoalSystem;
 import systems.GravitySystem;
 import systems.InputRecorderSystem;
 import systems.InputSystem;
+import systems.MessageSystem;
 import systems.MovementSystem;
 import systems.RenderSystem;
 import utils.Level;
@@ -38,6 +38,7 @@ public class Main extends Application {
 	private Pane applicationRoot;
 	private Canvas background;
 	private Canvas game;
+	private Canvas toast;
 	private Thread gameLoop;
 	private boolean isRunning;
 
@@ -73,6 +74,10 @@ public class Main extends Application {
 		return game;
 	}
 
+	public Canvas getToast() {
+		return toast;
+	}
+
 	public boolean isRunning() {
 		return isRunning;
 	}
@@ -87,9 +92,10 @@ public class Main extends Application {
 		this.primaryStage = primaryStage;
 		background = new Canvas();
 		game = new Canvas();
+		toast = new Canvas(Main.WIDTH, Main.HEIGHT);
 		applicationRoot = new Pane();
 		applicationRoot.setPrefSize(Main.WIDTH, Main.HEIGHT);
-		applicationRoot.getChildren().addAll(background, game);
+		applicationRoot.getChildren().addAll(background, game, toast);
 		primaryStage.setTitle(Main.TITLE);
 		primaryStage.setResizable(Main.IS_RESIZABLE);
 		primaryStage.setScene(new Scene(applicationRoot));
@@ -100,7 +106,7 @@ public class Main extends Application {
 		InputManager.getInstance().setTriggeredIntent(KeyCode.O, new OpenLevelIntent());
 		EntitySystemManager.getInstance().add(new InputRecorderSystem(), new InputSystem(), new DelayedInputSystem(),
 				new GravitySystem(), new CollisionSystem(), new MovementSystem(), new ContactSystem(),
-				new DoorSwitchSystem(), new GoalSystem(), new ExpirationSystem(), new CameraSystem(),
+				new DoorSwitchSystem(), new MessageSystem(), new ExpirationSystem(), new CameraSystem(),
 				new RenderSystem());
 		isRunning = true;
 		// set input handlers

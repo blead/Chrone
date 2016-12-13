@@ -3,26 +3,14 @@ package renderables;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
 
-public class RenderableDoorBlock extends RenderableRectangle {
-	private RenderableRectangle block;
+public class RenderableDoorBlock extends RenderableBlock {
 	private RenderableDiamond core;
-	private Paint secondaryColor;
 	private boolean isOpen;
 
 	public RenderableDoorBlock(double width, double height, Paint secondaryColor) {
-		super(width, height);
-		this.secondaryColor = secondaryColor;
+		super(width, height, secondaryColor);
 		isOpen = false;
-		block = new RenderableRectangle(width, height);
 		core = new RenderableDiamond(width, height);
-	}
-
-	public Paint getSecondaryColor() {
-		return secondaryColor;
-	}
-
-	public void setSecondaryColor(Paint secondaryColor) {
-		this.secondaryColor = secondaryColor;
 	}
 
 	public boolean isOpen() {
@@ -36,10 +24,10 @@ public class RenderableDoorBlock extends RenderableRectangle {
 	@Override
 	public void render(GraphicsContext gc, double x, double y) {
 		if (isOpen)
-			gc.setFill(secondaryColor);
-		block.render(gc, x, y);
+			gc.setFill(getSecondaryColor());
+		super.render(gc, x, y);
 		if (!isOpen) {
-			gc.setFill(secondaryColor);
+			gc.setFill(getSecondaryColor());
 			core.render(gc, x, y);
 		}
 	}

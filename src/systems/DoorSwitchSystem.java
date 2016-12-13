@@ -42,16 +42,10 @@ public class DoorSwitchSystem extends EntitySystem {
 				if (contactComponent.isContact()) {
 					codes.add(switchComponent.getCode());
 					switchBlock.setActive(true);
-					if (contactComponent.isContact(Direction.UP))
-						switchBlock.setDirection(Direction.UP);
-					else if (contactComponent.isContact(Direction.DOWN))
-						switchBlock.setDirection(Direction.DOWN);
-					else if (contactComponent.isContact(Direction.LEFT))
-						switchBlock.setDirection(Direction.LEFT);
-					else if (contactComponent.isContact(Direction.RIGHT))
-						switchBlock.setDirection(Direction.RIGHT);
-					else
-						throw new UnsupportedOperationException();
+					switchBlock.setDirection(Direction.UP, contactComponent.isContact(Direction.UP));
+					switchBlock.setDirection(Direction.DOWN, contactComponent.isContact(Direction.DOWN));
+					switchBlock.setDirection(Direction.LEFT, contactComponent.isContact(Direction.LEFT));
+					switchBlock.setDirection(Direction.RIGHT, contactComponent.isContact(Direction.RIGHT));
 				} else {
 					switchBlock.setActive(false);
 				}

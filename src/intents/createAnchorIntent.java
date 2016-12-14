@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package intents;
 
 import components.PositionComponent;

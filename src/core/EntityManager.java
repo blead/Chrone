@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package core;
 
 import java.util.ArrayList;

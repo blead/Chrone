@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package entities;
 
 import components.CameraComponent;
@@ -9,9 +12,9 @@ import components.JumpableSurfaceComponent;
 import components.PositionComponent;
 import components.RenderComponent;
 import components.VelocityComponent;
+import intents.CreateAnchorIntent;
 import intents.JumpIntent;
 import intents.MoveIntent;
-import intents.CreateAnchorIntent;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;

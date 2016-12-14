@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package components;
 
 import javafx.scene.shape.Shape;

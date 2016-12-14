@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package entities;
 
 import components.CollisionComponent;

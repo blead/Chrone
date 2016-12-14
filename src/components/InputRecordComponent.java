@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package components;
 
 import java.util.Queue;

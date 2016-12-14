@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package components;
 
 public abstract class CodeComponent extends Component {

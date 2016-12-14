@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package renderables;
 
 import java.util.HashSet;

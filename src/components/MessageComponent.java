@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package components;
 
 public class MessageComponent extends Component {

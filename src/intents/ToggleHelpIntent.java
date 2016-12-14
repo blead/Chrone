@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package intents;
 
 import java.util.ArrayList;
@@ -16,8 +19,8 @@ public class ToggleHelpIntent implements Intent {
 		helpList.add("Controls:");
 		helpList.add(" - Arrow Keys: move");
 		helpList.add(" - A: create an Anchor");
-		helpList.add(" - S: create a static Chrone");
-		helpList.add(" - D: create a dynamic Chrone");
+		helpList.add(" - S: create a Static Chrone");
+		helpList.add(" - D: create a Dynamic Chrone");
 		helpList.add(" - R: restart level");
 		helpList.add(" - O: open a new level");
 		helpList.add(" - H: toggle this help message");

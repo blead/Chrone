@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package utils;
 
 import javafx.geometry.Point2D;

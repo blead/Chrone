@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.10" icons="true" automaticImage="PNG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="false" dependencies="false" nesting-relationships="true" 
+  router="FAN">  
+  <class id="1" language="java" name="components.InputComponent" project="Chrone" 
+    file="/Chrone/src/components/InputComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="774" y="440"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="components.GoalComponent" project="Chrone" 
+    file="/Chrone/src/components/GoalComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="124" y="386"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="components.InputRecordComponent" project="Chrone" 
+    file="/Chrone/src/components/InputRecordComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="418" y="449"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="components.InputRecorderComponent" project="Chrone" 
+    file="/Chrone/src/components/InputRecorderComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1057" y="467"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="components.SwitchComponent" project="Chrone" 
+    file="/Chrone/src/components/SwitchComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2803" y="631"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="components.RenderComponent" project="Chrone" 
+    file="/Chrone/src/components/RenderComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1376" y="530"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="components.DoorComponent" project="Chrone" 
+    file="/Chrone/src/components/DoorComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3001" y="685"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="components.VelocityComponent" project="Chrone" 
+    file="/Chrone/src/components/VelocityComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1667" y="431"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="components.ExpirationComponent" project="Chrone" 
+    file="/Chrone/src/components/ExpirationComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1906" y="413"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="components.Component" project="Chrone" 
+    file="/Chrone/src/components/Component.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2093" y="113"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="components.ContactComponent" project="Chrone" 
+    file="/Chrone/src/components/ContactComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2188" y="458"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="components.MessageComponent" project="Chrone" 
+    file="/Chrone/src/components/MessageComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2468" y="467"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="components.JumpableSurfaceComponent" project="Chrone" 
+    file="/Chrone/src/components/JumpableSurfaceComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2704" y="386"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="components.CollisionComponent" project="Chrone" 
+    file="/Chrone/src/components/CollisionComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3100" y="413"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="components.DelayedInputComponent" project="Chrone" 
+    file="/Chrone/src/components/DelayedInputComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="777" y="671"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="components.CameraComponent" project="Chrone" 
+    file="/Chrone/src/components/CameraComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3295" y="422"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="components.GravityComponent" project="Chrone" 
+    file="/Chrone/src/components/GravityComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3467" y="386"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="components.CodeComponent" project="Chrone" 
+    file="/Chrone/src/components/CodeComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2906" y="413"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="components.PositionComponent" project="Chrone" 
+    file="/Chrone/src/components/PositionComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3667" y="431"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="core.AudioManager" project="Chrone" file="/Chrone/src/core/AudioManager.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4003" y="427"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="core.ChroneManager" project="Chrone" file="/Chrone/src/core/ChroneManager.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4357" y="418"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="core.LevelManager" project="Chrone" file="/Chrone/src/core/LevelManager.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4718" y="364"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="core.ToastManager" project="Chrone" file="/Chrone/src/core/ToastManager.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4940" y="328"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="core.EntityManager" project="Chrone" file="/Chrone/src/core/EntityManager.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5141" y="319"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="core.EntitySystemManager" project="Chrone" 
+    file="/Chrone/src/core/EntitySystemManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5360" y="301"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="core.InputManager" project="Chrone" file="/Chrone/src/core/InputManager.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5607" y="382"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="entities.Player" project="Chrone" file="/Chrone/src/entities/Player.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="368" y="1472"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="entities.Anchor" project="Chrone" file="/Chrone/src/entities/Anchor.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="577" y="1454"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="entities.InfoBlock" project="Chrone" file="/Chrone/src/entities/InfoBlock.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="787" y="1427"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="entities.DoorBlock" project="Chrone" file="/Chrone/src/entities/DoorBlock.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1028" y="1418"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="entities.Block" project="Chrone" file="/Chrone/src/entities/Block.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1478" y="1445"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="entities.SwitchBlock" project="Chrone" 
+    file="/Chrone/src/entities/SwitchBlock.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1688" y="1409"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="entities.GoalBlock" project="Chrone" file="/Chrone/src/entities/GoalBlock.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1921" y="1427"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="entities.Chrone" project="Chrone" file="/Chrone/src/entities/Chrone.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1272" y="1427"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="entities.TextUserInterface" project="Chrone" 
+    file="/Chrone/src/entities/TextUserInterface.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2170" y="1418"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="entities.DynamicChrone" project="Chrone" 
+    file="/Chrone/src/entities/DynamicChrone.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1149" y="1692"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="entities.Entity" project="Chrone" file="/Chrone/src/entities/Entity.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1331" y="1103"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="entities.StaticChrone" project="Chrone" 
+    file="/Chrone/src/entities/StaticChrone.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1478" y="1692"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="intents.RestartIntent" project="Chrone" 
+    file="/Chrone/src/intents/RestartIntent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4729" y="1333"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="40" language="java" name="intents.Intent" project="Chrone" file="/Chrone/src/intents/Intent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5145" y="1089"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="41" language="java" name="intents.CreateAnchorIntent" project="Chrone" 
+    file="/Chrone/src/intents/CreateAnchorIntent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4894" y="1333"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="intents.MoveIntent" project="Chrone" file="/Chrone/src/intents/MoveIntent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4512" y="1360"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="intents.CreateDynamicChroneIntent" project="Chrone" 
+    file="/Chrone/src/intents/CreateDynamicChroneIntent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5094" y="1333"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="intents.JumpIntent" project="Chrone" file="/Chrone/src/intents/JumpIntent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4512" y="1535"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="intents.ReturnToMenuIntent" project="Chrone" 
+    file="/Chrone/src/intents/ReturnToMenuIntent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5295" y="1333"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="intents.OpenLevelIntent" project="Chrone" 
+    file="/Chrone/src/intents/OpenLevelIntent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5476" y="1351"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="intents.ToggleHelpIntent" project="Chrone" 
+    file="/Chrone/src/intents/ToggleHelpIntent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5647" y="1360"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="48" language="java" name="intents.CreateStaticChroneIntent" project="Chrone" 
+    file="/Chrone/src/intents/CreateStaticChroneIntent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5830" y="1333"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="main.Main" project="Chrone" file="/Chrone/src/main/Main.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5928" y="504"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="renderables.RenderableRectangle" project="Chrone" 
+    file="/Chrone/src/renderables/RenderableRectangle.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2896" y="1285"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="renderables.RenderableStar" project="Chrone" 
+    file="/Chrone/src/renderables/RenderableStar.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3176" y="1312"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="renderables.RenderableText" project="Chrone" 
+    file="/Chrone/src/renderables/RenderableText.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3456" y="1294"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="53" language="java" name="renderables.Renderable" project="Chrone" 
+    file="/Chrone/src/renderables/Renderable.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3438" y="897"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="54" language="java" name="renderables.RenderableBlock" project="Chrone" 
+    file="/Chrone/src/renderables/RenderableBlock.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2934" y="1572"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="55" language="java" name="renderables.RenderableInfoBlock" project="Chrone" 
+    file="/Chrone/src/renderables/RenderableInfoBlock.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2666" y="1870"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="56" language="java" name="renderables.RenderableDoorBlock" project="Chrone" 
+    file="/Chrone/src/renderables/RenderableDoorBlock.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2946" y="1879"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="renderables.RenderableGoalBlock" project="Chrone" 
+    file="/Chrone/src/renderables/RenderableGoalBlock.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3226" y="1852"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="renderables.RenderableSwitchBlock" project="Chrone" 
+    file="/Chrone/src/renderables/RenderableSwitchBlock.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2597" y="1594"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="59" language="java" name="renderables.RenderableCircle" project="Chrone" 
+    file="/Chrone/src/renderables/RenderableCircle.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3736" y="1267"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="60" language="java" name="renderables.RenderableDiamond" project="Chrone" 
+    file="/Chrone/src/renderables/RenderableDiamond.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4016" y="1285"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="61" language="java" name="systems.ContactSystem" project="Chrone" 
+    file="/Chrone/src/systems/ContactSystem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="176" y="2592"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="62" language="java" name="systems.GravitySystem" project="Chrone" 
+    file="/Chrone/src/systems/GravitySystem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="338" y="2592"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="63" language="java" name="systems.CameraSystem" project="Chrone" 
+    file="/Chrone/src/systems/CameraSystem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="657" y="2619"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="64" language="java" name="systems.InputSystem" project="Chrone" file="/Chrone/src/systems/InputSystem.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="991" y="2610"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="65" language="java" name="systems.CollisionSystem" project="Chrone" 
+    file="/Chrone/src/systems/CollisionSystem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1247" y="2628"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="66" language="java" name="systems.InputRecorderSystem" project="Chrone" 
+    file="/Chrone/src/systems/InputRecorderSystem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1501" y="2592"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="67" language="java" name="systems.DelayedInputSystem" project="Chrone" 
+    file="/Chrone/src/systems/DelayedInputSystem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1685" y="2592"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="68" language="java" name="systems.EntitySystem" project="Chrone" 
+    file="/Chrone/src/systems/EntitySystem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1700" y="2158"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="69" language="java" name="systems.RenderSystem" project="Chrone" 
+    file="/Chrone/src/systems/RenderSystem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1856" y="2592"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="70" language="java" name="systems.DoorSwitchSystem" project="Chrone" 
+    file="/Chrone/src/systems/DoorSwitchSystem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2074" y="2610"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="71" language="java" name="systems.GarbageCollectionSystem" project="Chrone" 
+    file="/Chrone/src/systems/GarbageCollectionSystem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2317" y="2601"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="72" language="java" name="systems.MessageSystem" project="Chrone" 
+    file="/Chrone/src/systems/MessageSystem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2504" y="2592"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="73" language="java" name="systems.ExpirationSystem" project="Chrone" 
+    file="/Chrone/src/systems/ExpirationSystem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2667" y="2592"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="74" language="java" name="systems.MovementSystem" project="Chrone" 
+    file="/Chrone/src/systems/MovementSystem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2832" y="2592"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="75" language="java" name="utils.Direction" project="Chrone" file="/Chrone/src/utils/Direction.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4376" y="2339"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="76" language="java" name="utils.PrioritizedPoint2D" project="Chrone" 
+    file="/Chrone/src/utils/PrioritizedPoint2D.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4616" y="2204"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="77" language="java" name="utils.Collision" project="Chrone" file="/Chrone/src/utils/Collision.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4841" y="2222"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="78" language="java" name="utils.Level" project="Chrone" file="/Chrone/src/utils/Level.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5084" y="2384"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="79" language="java" name="utils.ComponentNotFoundException" project="Chrone" 
+    file="/Chrone/src/utils/ComponentNotFoundException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5339" y="2141"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="80" language="java" name="utils.Code" project="Chrone" file="/Chrone/src/utils/Code.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5572" y="2150"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="81" language="java" name="utils.CollisionBox" project="Chrone" file="/Chrone/src/utils/CollisionBox.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5820" y="2195"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="82">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="83">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <realization id="84">    
+    <end type="SOURCE" refId="60"/>    
+    <end type="TARGET" refId="53"/>  
+  </realization>  
+  <generalization id="85">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <generalization id="86">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="34"/>  
+  </generalization>  
+  <generalization id="87">    
+    <end type="SOURCE" refId="64"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <realization id="88">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <generalization id="89">    
+    <end type="SOURCE" refId="73"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <generalization id="90">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <realization id="91">    
+    <end type="SOURCE" refId="51"/>    
+    <end type="TARGET" refId="53"/>  
+  </realization>  
+  <generalization id="92">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <realization id="93">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <generalization id="94">    
+    <end type="SOURCE" refId="56"/>    
+    <end type="TARGET" refId="54"/>  
+  </generalization>  
+  <generalization id="95">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="96">    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <generalization id="97">    
+    <end type="SOURCE" refId="57"/>    
+    <end type="TARGET" refId="54"/>  
+  </generalization>  
+  <generalization id="98">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="99">    
+    <end type="SOURCE" refId="65"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <realization id="100">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <generalization id="101">    
+    <end type="SOURCE" refId="67"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <realization id="102">    
+    <end type="SOURCE" refId="41"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <generalization id="103">    
+    <end type="SOURCE" refId="58"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <generalization id="104">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <generalization id="105">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <generalization id="106">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <generalization id="107">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <generalization id="108">    
+    <end type="SOURCE" refId="54"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <generalization id="109">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <realization id="110">    
+    <end type="SOURCE" refId="50"/>    
+    <end type="TARGET" refId="53"/>  
+  </realization>  
+  <generalization id="111">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="112">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <realization id="113">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <generalization id="114">    
+    <end type="SOURCE" refId="62"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <generalization id="115">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="18"/>  
+  </generalization>  
+  <generalization id="116">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <generalization id="117">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="118">    
+    <end type="SOURCE" refId="70"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <generalization id="119">    
+    <end type="SOURCE" refId="69"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <generalization id="120">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="121">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="34"/>  
+  </generalization>  
+  <generalization id="122">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="123">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="18"/>  
+  </generalization>  
+  <realization id="124">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <generalization id="125">    
+    <end type="SOURCE" refId="61"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <generalization id="126">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <generalization id="127">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <realization id="128">    
+    <end type="SOURCE" refId="48"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <generalization id="129">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="130">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <generalization id="131">    
+    <end type="SOURCE" refId="44"/>    
+    <end type="TARGET" refId="42"/>  
+  </generalization>  
+  <generalization id="132">    
+    <end type="SOURCE" refId="63"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <generalization id="133">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="134">    
+    <end type="SOURCE" refId="74"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <generalization id="135">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="136">    
+    <end type="SOURCE" refId="55"/>    
+    <end type="TARGET" refId="54"/>  
+  </generalization>  
+  <realization id="137">    
+    <end type="SOURCE" refId="52"/>    
+    <end type="TARGET" refId="53"/>  
+  </realization>  
+  <realization id="138">    
+    <end type="SOURCE" refId="59"/>    
+    <end type="TARGET" refId="53"/>  
+  </realization>  
+  <generalization id="139">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="140">    
+    <end type="SOURCE" refId="66"/>    
+    <end type="TARGET" refId="68"/>  
+  </generalization>  
+  <generalization id="141">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <realization id="142">    
+    <end type="SOURCE" refId="46"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

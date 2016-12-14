@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package core;
 
 import com.google.gson.JsonSyntaxException;
@@ -13,6 +16,7 @@ import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
+import javafx.scene.media.MediaException;
 import javafx.scene.text.Font;
 import main.Main;
 import utils.Code;
@@ -33,11 +37,19 @@ public class LevelManager {
 	}
 
 	public void load() {
-		checkLevelData(level);
-		loadLevelResources();
-		resetLevel();
-		AudioManager.getInstance().playBgm(music);
-		parseLevelData(level.getData(), level.getMessages());
+		ToastManager.getInstance().show("Loading");
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				checkLevelData(level);
+				loadLevelResources();
+				resetLevel();
+				AudioManager.getInstance().playBgm(music);
+				parseLevelData(level.getData(), level.getMessages(), (long) (level.getWidth() / Level.TILE_SIZE),
+						(long) (level.getHeight() / Level.TILE_SIZE));
+				ToastManager.getInstance().hide();
+			}
+		}).start();
 	}
 
 	private void checkLevelData(Level level) {
@@ -65,7 +77,7 @@ public class LevelManager {
 				music = AudioManager.LOST_SIGNAL;
 			else
 				music = new Media(level.getMusic());
-		} catch (NullPointerException e) {
+		} catch (NullPointerException | IllegalArgumentException | UnsupportedOperationException | MediaException e) {
 			background = Level.DEFAULT_BACKGROUND;
 			music = AudioManager.DEAR_DIARY;
 		}
@@ -92,11 +104,11 @@ public class LevelManager {
 		});
 	}
 
-	private void parseLevelData(String[] data, String[] messages) {
+	private void parseLevelData(String[] data, String[] messages, long width, long height) {
 		int messageCount = 0;
 		try {
-			for (int i = 0; i < data.length; i++) {
-				for (int j = 0; j < data[i].length(); j++) {
+			for (int i = 0; i < height; i++) {
+				for (int j = 0; j < width; j++) {
 					char code = data[i].charAt(j);
 					// menu
 					if (code == '@')
@@ -126,7 +138,7 @@ public class LevelManager {
 				}
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
-			throw new JsonSyntaxException("insufficient amount of messages");
+			throw new JsonSyntaxException("invalid level size");
 		}
 	}
 

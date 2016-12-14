@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package systems;
 
 public abstract class EntitySystem implements Comparable<EntitySystem> {

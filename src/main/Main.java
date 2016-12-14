@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package main;
 
 import core.EntitySystemManager;
@@ -100,6 +103,7 @@ public class Main extends Application {
 		setInputHandlers();
 		gameLoop = getGameLoop();
 		gameLoop.start();
+
 	}
 
 	private void initializeStage() {

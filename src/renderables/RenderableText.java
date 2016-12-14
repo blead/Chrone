@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package renderables;
 
 import javafx.geometry.Bounds;

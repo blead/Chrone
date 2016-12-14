@@ -1,3 +1,6 @@
+/*
+ * @author Thad Benjaponpitak
+ */
 package entities;
 
 import components.CollisionComponent;
@@ -26,6 +29,6 @@ public class GoalBlock extends Entity {
 				new PositionComponent(positionX, positionY),
 				new CollisionComponent(new Rectangle(Block.WIDTH, Block.HEIGHT)),
 				new ContactComponent(VelocityComponent.class), new GoalComponent(),
-				new MessageComponent("CONGRATSalksdjflaksdjklajfs", true), new JumpableSurfaceComponent());
+				new MessageComponent("CONGRATULATIONS", true), new JumpableSurfaceComponent());
 	}
 }

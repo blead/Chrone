@@ -41,7 +41,7 @@ public class LevelManager {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				checkLevelData(level);
+				checkLevelData();
 				loadLevelResources();
 				resetLevel();
 				AudioManager.getInstance().playBgm(music);
@@ -52,7 +52,7 @@ public class LevelManager {
 		}).start();
 	}
 
-	private void checkLevelData(Level level) {
+	private void checkLevelData() {
 		String[] data = level.getData();
 		int messageCount = 0;
 		for (int i = 0; i < data.length; i++)

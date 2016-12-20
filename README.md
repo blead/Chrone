@@ -16,16 +16,17 @@ All functions in the game are controlled through unique keyboard inputs. This in
 
 ### controls
 These controls can be shown in-game as well by pressing `H`.
-  | Key | Action |
-  | :-: | :----: |
-  | _Arrow Keys_ | move the playable character |
-  | `A` | create an _Anchor_ |
-  | `S` | create a _Static Chrone_ |
-  | `S` | create a _Dynamic Chrone_ |
-  | `R` | restart a _level_ |
-  | `O` | open a new _level |
-  | `H` | toggle in-game help message |
-  | `Esc` | return to main menu |
+
+| Key | Action |
+| :-: | :----: |
+| _Arrow Keys_ | move the playable character |
+| `A` | create an _Anchor_ |
+| `S` | create a _Static Chrone_ |
+| `S` | create a _Dynamic Chrone_ |
+| `R` | restart a _level_ |
+| `O` | open a new _level_ |
+| `H` | toggle in-game help message |
+| `Esc` | return to main menu |
 
 ## Customizable Tile-based Level
 Each object in a _level_ is represented as a single character in an array of strings. This array is called a _tilemap_.
@@ -34,47 +35,49 @@ _Levels_ are loaded externally from JSON-encoded files. Anyone can create a new 
 ### tiles
 There are many tile types available. Furthermore, these tiles are easily extensible, allowing future developments of the project.
 
-- ### Player
+#### Player
   The playable character
-- ### Block
+#### Block
   A simple solid tile. Can be used to create a wall or a platform.
-- ### Switch Block
+#### Switch Block
   A _Block_ marked with a small colored circle. _Switch Blocks_ can be triggered from any direction by contact. Once triggered, _Door Blocks_ with the same color will open.
-- ### Door Block
+#### Door Block
   A _Block_ marked with a colored diamond shape. _Door blocks_ will open only if a _Switch Block_ with the same color is triggered. Once open, it can be passed through.
-- ### Info Block
+#### Info Block
   A _Block_ marked with a small `i` character. While the player is in contact with an _Info Block_, a message associated with the block will be displayed on the screen.
-- ### Goal Block
+#### Goal Block
   The objective of a level. When the player is in contact with a _Goal Block_, a congratulation message will be displayed on the screen, and an audio clip indicating a victory will play as well.
 
 ### level file structure
 A _level_ file is a JSON-encoded text file with the following fields:
 
-- ### `data`
+#### `data`
   An array of strings representing the _tilemap_. Tile types are represented by the following set of characters:
-    | Tile | Character |
-    | :--: | :-------: |
-    | _none_ | `0` |
-    | Block | `1` |
-    | Player | `2` |
-    | Info Block | `3` |
-    | Goal Block | `4` |
-    | Switch Block | `a` - `z`* |
-   | Door Block | `A` - `Z`* |
-  _(*) Switch Blocks and Door Blocks with matching character have the same associated color, therefore, there can be 26 different sets of Switch Blocks/Door Blocks._
-- ### `messages`
+
+| Tile | Character |
+| :--: | :-------: |
+| _none_ | `0` |
+| Block | `1` |
+| Player | `2` |
+| Info Block | `3` |
+| Goal Block | `4` |
+| Switch Block | `a` - `z`\* |
+| Door Block | `A` - `Z`\* |
+
+  _(\*) Switch Blocks and Door Blocks with matching character have the same associated color, therefore, there can be 26 different sets of Switch Blocks/Door Blocks._
+#### `messages`
   An array of strings consisting of messages displayed by _Info Blocks_. If there are `n` _Info Blocks_ in the _tilemap_, there must be at least `n` messages in this array. If there are more messages than the number of _Info Blocks_, the remaining messages are ignored. Messages are associated with _Info Blocks_ by their positioning order in the _tilemap_, from left to right and top to bottom.
-- ### `width` (optional)
+#### `width` (optional)
   A floating point value indicating the width of the _level_. Each tile is 60 units wide. If provided, the game will try to render the _level_ according to this value. If the actual width from `data` is larger, the overflowing part of the _tilemap_ will be ignored.
-- ### `height` (optional)
+#### `height` (optional)
   A floating point value indicating the height of the _level_. Each tile is 60 units high. If provided, the game will try to render the _level_ according to this value. If the actual width from `data` is larger, the overflowing part of the _tilemap_ will be ignored.
-- ### `gravityX` (optional)
+#### `gravityX` (optional)
   A floating point value indicating the gravity of the _level_ in the horizontal axis. If not provided, defaults to `0`.
-- ### `gravityY` (optional)
+#### `gravityY` (optional)
   A floating point value indicating the gravity of the _level_ in the vertical axis. If not provided, defaults to `0`.
-- ### `background` (optional)
+#### `background` (optional)
   A string representing the path to the background image of the _level_. If not provided or the path given is incorrect, the game will use the default background instead.
-- ### `music` (optional)
+#### `music` (optional)
   A string indicating the path to the background music of the _level_. If not provided or the path given is incorrect, the game will use the default background music instead.
 
 ### example level file structure
